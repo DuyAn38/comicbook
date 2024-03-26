@@ -16,6 +16,8 @@
     <link rel="shortcut icon" href="https://suustore.com/assets/frontend/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="{%static 'user/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{%static 'user/css/app.css' %}">
+    <link rel="stylesheet" href="{%static 'user/css/css.css' %}">
+    <link rel="stylesheet" href="{%static 'user/css/all.min.css' %}">
 
     <title> Truyện Tranh Online</title>
     <meta name="description"
@@ -24,9 +26,7 @@
 
 
 <body>
-    {% comment %} <header class="header d-none d-lg-block"> {% endcomment %}
     <header >
-        <!-- place navbar here -->
         <nav class="navbar navbar-expand-lg navbar-dark header__navbar p-md-0">
             <div class="container">
 
@@ -57,55 +57,55 @@
                         </li>
                     </ul>
 
-                    {% comment %} darkmode 
-                    <div class="form-check form-switch me-3 d-flex align-items-center">
-                        <label class="form-check-label">
-                            <svg width="25" height="25" fill="currentColor"
-                                class="bi bi-brightness-high" viewBox="0 0 16 16" style="fill: #fff;">
-                                <path
-                                    d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input class="form-check-input theme_mode" type="checkbox"
-                            style="transform: scale(1.3); margin-left: 12px; margin-right: 12px;">
-
-                        <label class="form-check-label">
-                            <svg  width="25" height="25" viewBox="0 0 384 512"
-                                style="fill: #fff;">
-                                <path
-                                    d="M144.7 98.7c-21 34.1-33.1 74.3-33.1 117.3c0 98 62.8 181.4 150.4 211.7c-12.4 2.8-25.3 4.3-38.6 4.3C126.6 432 48 353.3 48 256c0-68.9 39.4-128.4 96.8-157.3zm62.1-66C91.1 41.2 0 137.9 0 256C0 379.7 100 480 223.5 480c47.8 0 92-15 128.4-40.6c1.9-1.3 3.7-2.7 5.5-4c4.8-3.6 9.4-7.4 13.9-11.4c2.7-2.4 5.3-4.8 7.9-7.3c5-4.9 6.3-12.5 3.1-18.7s-10.1-9.7-17-8.5c-3.7 .6-7.4 1.2-11.1 1.6c-5 .5-10.1 .9-15.3 1c-1.2 0-2.5 0-3.7 0c-.1 0-.2 0-.3 0c-96.8-.2-175.2-78.9-175.2-176c0-54.8 24.9-103.7 64.1-136c1-.9 2.1-1.7 3.2-2.6c4-3.2 8.2-6.2 12.5-9c3.1-2 6.3-4 9.6-5.8c6.1-3.5 9.2-10.5 7.7-17.3s-7.3-11.9-14.3-12.5c-3.6-.3-7.1-.5-10.7-.6c-2.7-.1-5.5-.1-8.2-.1c-3.3 0-6.5 .1-9.8 .2c-2.3 .1-4.6 .2-6.9 .4z">
-                                </path>
-                            </svg>
-                        </label>
-                    </div>{% endcomment %}
+                    
 
                     <form class="d-flex header__form-search" action="" method="GET">
-                        <input class="form-control search-story" type="text" placeholder="Tìm kiếm" name="key_word"
-                            value="">
-                            
-                        <div class="col-12 search-result shadow no-result d-none">
-                            <div class="card text-white bg-light">
-                                <div class="card-body p-0">
-                                    <ul class="list-group list-group-flush d-none">
-                                        <li class="list-group-item">
-                                            <a href="#" class="text-dark hover-title">Tự cẩm</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        {% comment %} icon timkiem {% endcomment %}
+                        <input class="form-control search-story" type="text" placeholder="Tìm kiếm" name="key_word" value="">
                         <button class="btn" type="submit">
                             <svg height="1em" viewBox="0 0 512 512">
-                                <path
-                                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z">
-                                </path>
+                                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"></path>
                             </svg>
                         </button>
-                        
                     </form>
+                    
+
+                    <div class="header__auth-buttons">
+                        <button class="btn btn-login" type="button">Đăng nhập</button>
+                        <button class="btn btn-register" type="button">Đăng ký</button>
+                    </div>
+                    <style>
+                        .header__auth-buttons {
+                            display: flex;
+                            align-items: center;
+                        }
+                        
+                        .btn-login,
+                        .btn-register {
+                            margin-left: 10px; /* Khoảng cách giữa các nút */
+                            background-color: #007bff; /* Màu nền của nút */
+                            color: #fff; /* Màu chữ của nút */
+                            border: none;
+                            padding: 8px 16px; /* Độ lớn của nút */
+                            border-radius: 4px;
+                            cursor: pointer;
+                        }
+                        
+                        .btn-login:hover,
+                        .btn-register:hover {
+                            background-color: #0056b3; /* Màu nền của nút khi hover */
+                        }
+                        
+                    </style>
+
+
+                    <button class="btn btn-profile" type="button">
+                        <svg height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 12C15.3137 12 18 9.31371 18 6C18 2.68629 15.3137 0 12 0C8.68629 0 6 2.68629 6 6C6 9.31371 8.68629 12 12 12ZM12 14C8.00001 14 0 15.6863 0 18V20C0 20.5523 0.447715 21 1 21H23C23.5523 21 24 20.5523 24 20V18C24 15.6863 16 14 12 14Z" fill="currentColor"/>
+                        </svg>
+                    </button>
+
+                    
+
                 </div>
             </div>
         </nav>
@@ -116,6 +116,10 @@
     {% block home %}{% endblock home %}
     {% block category %}{% endblock category %}
     {% block detai %}{% endblock detai %}
+    {% block chap %}{% endblock chap %}
+    {% block information %}{% endblock information %}
+
+
 
     <div id="footer" class="footer border-top pt-2">
         <div class="container">
@@ -149,6 +153,7 @@
     <script src="{%static 'user/js/bootstrap.min.js' %}"></script>
     <script src="{%static 'user/js/app.js' %}"></script>
     <script src="{%static 'user/js/common.js' %}"></script>
+    <script src="{%static 'user/js/js.js' %}"></script>
 
 
     <div id="loadingPage" class="loading-full">

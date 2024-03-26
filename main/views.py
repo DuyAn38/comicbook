@@ -12,3 +12,9 @@ def category(requert):
 
 def detai(requert):
     return render(requert,'user/detai.html')
+
+def chap(requert):
+    return render(requert,'user/chap.html')
+
+def information(requert):
+    return render(requert,'user/information.html')

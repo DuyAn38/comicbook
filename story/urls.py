@@ -25,4 +25,6 @@ urlpatterns = [
     path('',main.home),
     path('category',main.category),
     path('detai',main.detai),
+    path('chap',main.chap),
+    path('information',main.information),
 ]
