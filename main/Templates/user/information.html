@@ -2,64 +2,170 @@
 {% load static %}
 {% block information %}
 
-<body>
-    <header>
-        <div class="container">
-            <nav class="menu">
-                <!-- Các mục menu -->
-            </nav>
-            <div class="profile-info">
-                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Ảnh cá nhân">
-                <h3>Tên: </h3>
-                <p>Tên đăng nhập: username</p>
-                <p>Email: example@example.com</p>
+
+<div class="profile-container">
+    <div class="left-sidebar">
+        <img src="{% static 'user/img/avatar.jpg' %}" alt="Ảnh cá nhân" class="profile-picture">
+        <ul class="sidebar-menu">
+            <li><a href="#general-info">Thông tin chung</a></li>
+            <li><a href="#followed-stories">Truyện theo dõi</a></li>
+            <li><a href="#change-password">Đổi mật khẩu</a></li>
+            <li><a href="#">Đăng xuất</a></li>
+        </ul>
+    </div>
+
+    <div class="right-content">
+        <!-- Khung thông tin chi tiết -->
+        <div id="general-info" class="info-section">
+            <!-- Thông tin chung -->
+            <h2>Thông tin chung</h2>
+            <div class="info-item">
+                <strong>Họ và tên:</strong>
+                <span class="name">Tên của bạn</span>
+            </div>
+            <div class="info-item">
+                <strong>Email:</strong>
+                <span class="email">example@gmail.com</span>
             </div>
         </div>
-    </header>
-</body>
+        
+
+        <div id="followed-stories" class="info-section">
+            <!-- Truyện theo dõi -->
+            <h2>Truyện theo dõi</h2>
+            <p>...</p>
+        </div>
+
+        <div id="change-password" class="info-section">
+            <!-- Đổi mật khẩu -->
+            <h2>Đổi mật khẩu</h2>
+            <p>...</p>
+        </div>
+    </div>
+</div>
 
 <style>
-    body {
-        margin: 0;
+    .profile-container {
+        display: flex;
+        max-width: 900px;
+        margin: 20px auto; 
+    }
+    
+    
+    
+    .left-sidebar {
+        width: 30%; 
+        padding: 20px;
+        background-color: #f2f2f2;
+    }
+    
+    .right-content {
+        flex: 1;
+        padding: 20px;
+    }
+    
+    .profile-picture {
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .sidebar-menu {
+        list-style-type: none;
         padding: 0;
     }
-
-    header {
-        background-color: #f2f2f2;
-        padding: 20px 0;
+    
+    .sidebar-menu li {
+        margin-bottom: 10px;
+    }
+    
+    .sidebar-menu a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+        padding: 8px 16px;
+        transition: background-color 0.3s ease;
+    }
+    
+    .sidebar-menu a:hover {
+        background-color: #ddd;
+    }
+    
+    .info-section {
+        display: none;
+    }
+    
+    .info-section.active {
+        display: block;
+    }
+    
+    .info-section h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .info-section p {
+        font-size: 16px;
+        line-height: 1.6;
     }
 
-    .container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 70%;
-        margin: 0 auto;
+    .sidebar-menu a.active {
+        font-weight: bold;
     }
 
-    .menu {
-        flex: 1; /* Chiếm 1/3 chiều rộng của container */
+    
+    .info-item {
+        margin-bottom: 10px;
     }
+    
+    .info-item strong {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+    
+    
 
-    .profile-info {
-        flex: 2; /* Chiếm 2/3 chiều rộng của container */
-        text-align: left;
-        margin-left: 20px; /* Khoảng cách giữa profile-info và menu */
-    }
-
-    .profile-info img {
-        border-radius: 50%;
-        width: 150px;
-        height: 150px;
-    }
-
-    h3 {
-        margin-top: 10px;
-    }
-
-    p {
-        margin: 5px 0;
-    }
 </style>
+
+
+
+<script>
+    // Thêm sự kiện click cho các mục trong menu
+document.addEventListener("DOMContentLoaded", function() {
+    const menuItems = document.querySelectorAll('.sidebar-menu a');
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+
+            // Ẩn tất cả các phần thông tin
+            document.querySelectorAll('.info-section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Hiển thị phần thông tin được chọn
+            targetSection.classList.add('active');
+
+            // Loại bỏ class active từ tất cả các mục khác
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+            });
+
+            // Thêm class active vào mục được nhấp vào
+            this.classList.add('active');
+        });
+    });
+});
+
+</script>
+
+
+
 
 {% endblock information %}

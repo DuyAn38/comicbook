@@ -2,414 +2,380 @@
 {% load static %}
 {% block home %}
    <main>
-    <div class="section-stories-hot mb-3">
-        <div class="container">
-            <div class="row">
-                <div class="head-title-global d-flex justify-content-between mb-2">
-                    <div class="col-4 col-md-3 col-lg-2 head-title-global__left d-flex align-items-center">
-                        <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
-                            <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
-                                title="Truyện Hot">Truyện Hot</a>
-                        </h2>
-                        <i class="fa-solid fa-fire-flame-curved"></i>
-                    </div>
+    <style>
+        .home-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    
+        .section-stories-hot__list {
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+    
+        .story-item {
+            display: inline-block;
+            width: 240px; /* Độ rộng của mỗi truyện */
+            margin-right: 10px; /* Khoảng cách giữa các truyện */
+        }
 
-                </div>
-            </div>
+        .section-stories-hot__list::-webkit-scrollbar {
+            display: none; /* Ẩn thanh cuộn trên Chrome, Safari */
+        }
+        
+        .section-stories-hot__list {
+            scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+        }
 
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-stories-hot__list">
-                            <div class="story-item">
-                                <a href="story.html" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+        
+        /* hien thi san pham */
+        .section-stories-hot__list {
+            display: flex;
+            flex-wrap: wrap; /* Cho phép các phần tử xuống hàng khi không đủ không gian */
+           
+        }
+        
+        .story-item {
+            width: calc((100% - 40px) / 5); /* Tính toán chiều rộng của mỗi phần tử để có 5 sản phẩm trên mỗi hàng */
+            margin-bottom: 10px; /* Khoảng cách giữa các hàng */
+            margin-right: 10px; /* Khoảng cách giữa các sản phẩm */
+        }
+        
+        @media (max-width: 1200px) {
+            .story-item {
+                width: calc((100% - 30px) / 4); /* Điều chỉnh chiều rộng khi kích thước màn hình nhỏ hơn */
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .story-item {
+                width: calc((100% - 20px) / 3); /* Điều chỉnh chiều rộng khi kích thước màn hình nhỏ hơn */
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .story-item {
+                width: calc((100% - 10px) / 2); /* Điều chỉnh chiều rộng khi kích thước màn hình nhỏ hơn */
+            }
+        }
+        
+        
+        
 
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
- 
-                            
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/khong_phu_the_duyen.jpg' %}" alt="Không Phụ Thê Duyên"
-                                            class="img-fluid" width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Không Phụ Thê Duyên</h3>
+        
+        
+    </style>
 
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/diu_dang_tan_xuong.jpg' %}" alt="Dịu Dàng Tận Xương"
-                                            class="img-fluid" width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Dịu Dàng Tận Xương</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/vo_chong_sieu_sao_hoi_ngot.jpg' %}"
-                                            alt="Vợ Chồng Siêu Sao Hơi Ngọt" class="img-fluid" width="150" height="230"
-                                            loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Vợ Chồng Siêu Sao Hơi Ngọt</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/that_u_that_u_phai_la_hong_phai_xanh_tham.jpg' %}"
-                                            alt="Thật Ư? Thật Ư? Phải Là Hồng Phai Xanh Thắm" class="img-fluid"
-                                            width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Thật Ư? Thật Ư? Phải Là Hồng
-                                        Phai Xanh Thắm</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/thieu_tuong_vo_ngai_noi_gian_roi.jpg' %}"
-                                            alt="Thiếu Tướng, Vợ Ngài Nổi Giận Rồi" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Thiếu Tướng, Vợ Ngài Nổi Giận
-                                        Rồi</h3>
-
-                                    <div class="list-badge">
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/cung_chieu_vo_nho_troi_ban.jpg' %}" 
-                                        alt="Cưng Chiều Vợ Nhỏ Trời Ban" class="img-fluid" width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Cưng Chiều Vợ Nhỏ Trời Ban</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/thien_huong_nguoi_mu_liec_mat_dua_tinh.jpg' %}"
-                                            alt="Thiên Hướng Người Mù, Liếc Mắt Đưa Tình" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Thiên Hướng Người Mù, Liếc Mắt
-                                        Đưa Tình</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            
-                        </div>
-
-                        <div class="section-stories-hot__list wrapper-skeleton d-none">
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                            <div class="skeleton" style="max-width: 150px; width: 100%; height: 230px;"></div>
-                        </div>
-                    </div>
+    
+    
+    <div class="home-container">
+        <div class="row">
+            <div class="head-title-global d-flex justify-content-between mb-2">
+                <div class="col-4 col-md-3 col-lg-2 head-title-global__left d-flex align-items-center">
+                    <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
+                        <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
+                            title="Truyện Hot">Truyện Hot</a>
+                    </h2>
+                    <i class="fa-solid fa-fire-flame-curved"></i>
                 </div>
             </div>
         </div>
-
-
-        <div class="section-stories-hot mb-3">
-            <div class="container">
-                <div class="row">
-                    <div class="head-title-global d-flex justify-content-between mb-2">
-                        <div class="col-6 col-md-4 col-lg-4 head-title-global__left d-flex align-items-center">
-                            <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
-                                <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
-                                    title="Truyện mới cập nhật">Truyện mới cập nhật</a>
-                            </h2>
-                            <i class="fa-solid fa-fire-flame-curved"></i>
-                        </div>
-
-                      
+    
+        <div class="section-stories-hot__list" id="storyCarousel">
+            
+            <div class="story-item">
+                <a href="#" class="d-block text-decoration-none">
+                    <div class="story-item__image">
+                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="tucam" loading="lazy">
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="section-stories-hot__list">
-                            
-                            <div class="story-item">
-                                <a href="story.html" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="story-item">
-                                <a href="story.html" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
- 
-                            
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/khong_phu_the_duyen.jpg' %}" alt="Không Phụ Thê Duyên"
-                                            class="img-fluid" width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Không Phụ Thê Duyên</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/diu_dang_tan_xuong.jpg' %}" alt="Dịu Dàng Tận Xương"
-                                            class="img-fluid" width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Dịu Dàng Tận Xương</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/vo_chong_sieu_sao_hoi_ngot.jpg' %}"
-                                            alt="Vợ Chồng Siêu Sao Hơi Ngọt" class="img-fluid" width="150" height="230"
-                                            loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Vợ Chồng Siêu Sao Hơi Ngọt</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/that_u_that_u_phai_la_hong_phai_xanh_tham.jpg' %}"
-                                            alt="Thật Ư? Thật Ư? Phải Là Hồng Phai Xanh Thắm" class="img-fluid"
-                                            width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Thật Ư? Thật Ư? Phải Là Hồng
-                                        Phai Xanh Thắm</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/thieu_tuong_vo_ngai_noi_gian_roi.jpg' %}"
-                                            alt="Thiếu Tướng, Vợ Ngài Nổi Giận Rồi" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Thiếu Tướng, Vợ Ngài Nổi Giận
-                                        Rồi</h3>
-
-                                    <div class="list-badge">
-
-                                        <span
-                                            class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-
-                                        <span
-                                            class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/cung_chieu_vo_nho_troi_ban.jpg' %}" 
-                                        alt="Cưng Chiều Vợ Nhỏ Trời Ban" class="img-fluid" width="150" height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Cưng Chiều Vợ Nhỏ Trời Ban</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="story-item">
-                                <a href="#" class="d-block text-decoration-none">
-                                    <div class="story-item__image">
-                                        <img src="{%static 'user/img/thien_huong_nguoi_mu_liec_mat_dua_tinh.jpg' %}"
-                                            alt="Thiên Hướng Người Mù, Liếc Mắt Đưa Tình" class="img-fluid" width="150"
-                                            height="230" loading="lazy">
-                                    </div>
-                                    <h3 class="story-item__name text-one-row story-name">Thiên Hướng Người Mù, Liếc Mắt
-                                        Đưa Tình</h3>
-
-                                    <div class="list-badge">
-                                        <span class="story-item__badge badge text-bg-success">Full</span>
-                                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                                        <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+                    <div class="list-badge">
+                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
                     </div>
-                </div>
+                </a>
             </div>
 
-            <div class="pagination-container">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
-                    </li>
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                    </li>
-                </ul>
+            <div class="story-item">
+                <a href="#" class="d-block text-decoration-none">
+                    <div class="story-item__image">
+                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="tucam" loading="lazy">
+                    </div>
+                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+                    <div class="list-badge">
+                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
+                    </div>
+                </a>
             </div>
+
+            <div class="story-item">
+                <a href="#" class="d-block text-decoration-none">
+                    <div class="story-item__image">
+                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="tucam" loading="lazy">
+                    </div>
+                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+                    <div class="list-badge">
+                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="story-item">
+                <a href="#" class="d-block text-decoration-none">
+                    <div class="story-item__image">
+                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="tucam" loading="lazy">
+                    </div>
+                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+                    <div class="list-badge">
+                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="story-item">
+                <a href="#" class="d-block text-decoration-none">
+                    <div class="story-item__image">
+                        <img src="{%static 'user/img/tu_cam.jpg' %}" alt="tucam" loading="lazy">
+                    </div>
+                    <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+                    <div class="list-badge">
+                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
+                    </div>
+                </a>
+            </div>
+
             
         </div>
+    </div>
+    
+
+
+<div class="section-stories-hot mb-3">
+    <div class="home-container">
+        <div class="row">
+            <div class="head-title-global d-flex justify-content-between mb-2">
+                <div class="col-6 col-md-4 col-lg-4 head-title-global__left d-flex align-items-center">
+                    <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
+                        <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
+                            title="Truyện mới cập nhật">Truyện mới cập nhật</a>
+                    </h2>
+                    <i class="fa-solid fa-fire-flame-curved"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="section-stories-hot__list">
+                    
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="story-item">
+                        <a href="story.html" class="d-block text-decoration-none">
+                            <div class="story-item__image">
+                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                    height="230" loading="lazy">
+                            </div>
+                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+
+                            <div class="list-badge">
+                                <span class="story-item__badge story-item__badge-new badge text-bg-info text-light">New</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    {% comment %} page {% endcomment %}
+    <div class="pagination-container">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&laquo;</a>
+            </li>
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">&raquo;</a>
+            </li>
+        </ul>
+    </div>
+
 
     </main>
 {% endblock home %}
