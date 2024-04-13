@@ -17,13 +17,14 @@
                         <p><strong>Lượt theo dõi:</strong> 50</p>
                         <p><strong>Lượt xem:</strong> 5000</p>
                         <p><strong>Thể Loại:</strong> 5000</p>
-                        <div class="buttons">
-                            <button class="read-from-beginning">Đọc từ đầu</button>
-                            <button class="follow">Theo dõi</button>
-                            <button class="like">Thích</button>
 
-                            
+                        <!-- Trong phần HTML -->
+                        <div class="buttons">
+                            <button class="action-btn read-from-beginning">Đọc từ đầu</button>
+                            <button class="action-btn follow">Theo dõi</button>
+                            <button class="action-btn like">Thích</button>
                         </div>
+
 
                     </div>
 
@@ -34,6 +35,7 @@
                         Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện 
                     </p>
                 </div>
+                
                 <div class="chapter-list ">
                     <h2>Danh sách chương</h2>
                     <ul>
@@ -135,6 +137,36 @@
                 text-decoration: underline;
                 color: #007bff;
             }
+
+            /* Trong phần CSS */
+            .buttons {
+                margin-top: 10px;
+                display: flex;
+            }
+
+            .action-btn {
+                flex-grow: 1;
+                padding: 10px 20px;
+                margin-right: 10px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .read-from-beginning {
+                background-color: #26b926;
+                color: white;
+            }
+
+            .follow {
+                background-color: #e70f35;
+                color: white;
+            }
+
+            .like {
+                background-color: #0b62dd;
+                color: white;
+            }
+
         </style>
     </main>
 

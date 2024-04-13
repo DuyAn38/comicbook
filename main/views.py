@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import *
 
-# Create your views here.
-def base(requert):
-    return render(requert,'user/base.html')
 
+from .Python.user.base import *
+from .Python.user.account import *
+
+
+# user
 def home(requert):
     return render(requert,'user/home.html')
 
@@ -18,3 +22,18 @@ def chap(requert):
 
 def information(requert):
     return render(requert,'user/information.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
+
+def login(request):
+    return render(request, 'user/login.html')
+
+def register(request):
+    return render(request, 'user/register.html')
+
+
+# admin
+def baseadmin(requert):
+    return render(requert,'admin/baseadmin.html')

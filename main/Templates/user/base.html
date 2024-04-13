@@ -31,6 +31,15 @@
 </head>
 
 <body>
+    <style>
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            
+           
+            border-radius: 10px;
+        }
+    </style>
 
     
     
@@ -85,16 +94,28 @@
                     </form>
                     
                     
+                    {% if user.is_authenticated %}
+                        <div class="header__auth-buttons d-flex align-items-center ms-md-auto">
+                            <div class="dropdown">
+                                <button class="btn btn-profile dropdown-toggle me-2" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 12C15.3137 12 18 9.31371 18 6C18 2.68629 15.3137 0 12 0C8.68629 0 6 2.68629 6 6C6 9.31371 8.68629 12 12 12ZM12 14C8.00001 14 0 15.6863 0 18V20C0 20.5523 0.447715 21 1 21H23C23.5523 21 24 20.5523 24 20V18C24 15.6863 16 14 12 14Z" fill="currentColor"/>
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="{% url 'infomation' %}">Thông tin cá nhân</a></li>
+                                    <li><a class="dropdown-item" href="#">Quản lý</a></li>
+                                    <li><a class="dropdown-item" href="#">theo dõi</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% else %}
                     <div class="header__auth-buttons d-flex align-items-center ms-md-auto">
-                        <button class="btn btn-login me-2" type="button">Đăng nhập</button>
-                        <button class="btn btn-register" type="button">Đăng ký</button>
+                        <a href="{% url 'login' %}" class="btn btn-login me-2">Đăng nhập</a>
+                        <a href="{% url 'register' %}" class="btn btn-register">Đăng ký</a>
                     </div>
-                    
-                    <button class="btn btn-profile" type="button">
-                        <svg height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 12C15.3137 12 18 9.31371 18 6C18 2.68629 15.3137 0 12 0C8.68629 0 6 2.68629 6 6C6 9.31371 8.68629 12 12 12ZM12 14C8.00001 14 0 15.6863 0 18V20C0 20.5523 0.447715 21 1 21H23C23.5523 21 24 20.5523 24 20V18C24 15.6863 16 14 12 14Z" fill="currentColor"/>
-                        </svg>
-                    </button>
+                    {% endif %}
 
                 </div>
             </div>
@@ -108,7 +129,8 @@
     {% block detai %}{% endblock detai %}
     {% block chap %}{% endblock chap %}
     {% block information %}{% endblock information %}
-
+    {% block login %}{% endblock login %}
+    {% block register %}{% endblock register %}
     
 
     <footer class="footer-area section_gap">
