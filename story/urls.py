@@ -33,10 +33,17 @@ urlpatterns = [
 
 
     path('logout/', main.logout_view, name='logout'),
-    path('login/', main.login, name='login'),
-    path('register/', main.register, name='register'),
+    path('login/', main.login_view, name='login'),
+    path('register/', main.register_view, name='register'),
 
     #admin
     path('baseadmin/', main.baseadmin, name = 'baseadmin'),
-    
+    path('homeadmin/', main.homeadmin, name = 'homeadmin'),
+    path('categoryadmin/', main.categoryadmin, name = 'categoryadmin'),
+    path('comic/', main.comic, name = 'comic'),
+    path('user/', main.user, name = 'user'),
+    path('chap/', main.chap, name = 'chap'),
+  
+
+
 ]
