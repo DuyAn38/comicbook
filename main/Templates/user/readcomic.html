@@ -1,0 +1,74 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block readcomic %}
+
+    <div class="container">
+        <h1 class="text-center">Tên Truyện</h1>
+
+        
+        <div class="text-center mb-4">
+            <button type="button" class="btn btn-primary"> <</button>
+            <select class="custom-select" id="chap-selector">
+                <option selected>Chọn chap</option>
+                <option value="chap1">Chap 1</option>
+                <option value="chap2">Chap 2</option>
+                <option value="chap3">Chap 3</option>
+               
+            </select>
+            <button type="button" class="btn btn-primary"> > </button>
+        </div>
+
+        
+        <div class="text-center">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+        </div>
+
+        
+
+        
+        <h3 class="mt-5">Bình luận</h3>
+        <div class="comment-input">
+            <input type="text" class="form-control flex-grow-1" placeholder="Nhập bình luận">
+            <button type="button" class="btn btn-primary">Gửi</button>
+        </div>
+        
+
+
+        <div class="comment-container">
+           
+            <div class="comment">
+                <img src="{% static 'user/img/avatar.jpg' %}" alt="Avatar" class="avatar">
+                <div class="comment-content">
+                    <strong>User1:</strong>
+                    <p>Bình luận 1</p>
+                </div>
+            </div>
+        
+            <div class="comment">
+                <img src="{% static 'user/img/avatar.jpg' %}" alt="Avatar" class="avatar">
+                <div class="comment-content">
+                    <strong>User2:</strong>
+                    <p>Bình luận 2</p>
+                </div>
+            </div>
+        
+            <div class="comment">
+                <img src="{% static 'user/img/avatar.jpg' %}" alt="Avatar" class="avatar">
+                <div class="comment-content">
+                    <strong>User3:</strong>
+                    <p>Bình luận 3</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+{% endblock readcomic %}

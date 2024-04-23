@@ -12,7 +12,7 @@
     <!-- Bootstrap CSS v5.2.1 -->
     <link rel="stylesheet" href="{% static 'user/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/app.css' %}">
-    <link rel="stylesheet" href="{% static 'user/css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'user/css/all.min.css' %}">
 
 
@@ -21,8 +21,12 @@
 <!-- Import Slick Carousel CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-W1IeQzeT7JnvpzOKtz+ryIKG6Qm6FZlYwZ3VsU5+yQ5zYb5f4kjc+oMglaZDJglrGXzFpzbK2eDuQvKGJ/9ZKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <!-- Import Slick Carousel JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js" integrity="sha512-X9bBrKBrb7T4ATV/kX2+88FIs/uKOk5+L0sBZth0gPhly5tG9rVnS15l7o1yVtx+4R2k39p7b0agpUm85wBzTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     
 
@@ -31,15 +35,7 @@
 </head>
 
 <body>
-    <style>
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            
-           
-            border-radius: 10px;
-        }
-    </style>
+    
 
     
     
@@ -56,33 +52,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Thể loại
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-custom">
-                                <li><a class="dropdown-item" href="#">Ngôn Tình</a></li>
-                                <li><a class="dropdown-item" href="#">Trọng Sinh</a></li>
-                                <li><a class="dropdown-item" href="#">Cổ Đại</a></li>
-                                <li><a class="dropdown-item" href="#">Tiên Hiệp</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Thể loại
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-custom">
-                                <li><a class="dropdown-item" href="#">Ngôn Tình</a></li>
-                                <li><a class="dropdown-item" href="#">Trọng Sinh</a></li>
-                                <li><a class="dropdown-item" href="#">Cổ Đại</a></li>
-                                <li><a class="dropdown-item" href="#">Tiên Hiệp</a></li>
-                            </ul>
-                        </li>
-                    </ul>
 
                     <form class="d-flex header__form-search " action="" method="GET">
                         <input class="form-control me-2 search-story" type="text" placeholder="Tìm kiếm" name="key_word" value="">
@@ -103,12 +72,13 @@
                                 </svg>
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="{% url 'infomation' %}">Thông tin cá nhân</a></li>
+                                <li><a class="dropdown-item" href="{% url 'infomation' %}">Thông Tin Cá Nhân</a></li>
+                                <li><a class="dropdown-item" href="{% url 'follow' %}">Truyện Theo Dõi</a></li>
                                 {% if user.is_staff %}
-                                    <li><a class="dropdown-item" href="{% url 'homeadmin' %}">Quản lý</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'homeadmin' %}">Quản Lý</a></li>
                                 {% endif %}
-                                <li><a class="dropdown-item" href="#">theo dõi</a></li>
-                                <li><a class="dropdown-item" href="{% url 'logout' %}">Đăng xuất</a></li>
+                                
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Đăng Xuất</a></li>
                             </ul>
                         </div>
                     </div>
@@ -123,7 +93,61 @@
             </div>
         </nav>
 
-        
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="#"> Trang Chủ</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+
+                    
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Thể loại</a>
+                        
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% for category in categories %}
+                            <li><a class="dropdown-item" href="{% url 'categoryuser' %}?category={{ category.slug }}">{{ category.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    
+
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Xếp hạng</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                      
+                      <li><a class="dropdown-item" href="#">Xếp hạng 1</a></li>
+                      <li><a class="dropdown-item" href="#">Xếp hạng 2</a></li>
+                      <li><a class="dropdown-item" href="#">Xếp hạng 3</a></li>
+                      
+                    </ul>
+
+                  </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"> Theo Dõi</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Lịch Sử</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Fanpage</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#"> Chính Sách Bảo Mật</a>
+                </li>
+
+
+                </ul>
+              </div>
+            </div>
+          </nav>
     </header>
     
     {% block home %}{% endblock home %}
@@ -133,7 +157,9 @@
     {% block information %}{% endblock information %}
     {% block login %}{% endblock login %}
     {% block register %}{% endblock register %}
-    
+    {% block readcomic %}{% endblock readcomic %}
+    {% block Search %}{% endblock Search %}
+    {% block follow  %}{% endblock follow  %}
 
     <footer class="footer-area section_gap">
         <div id="footer" class="footer border-top pt-2">
@@ -179,17 +205,11 @@
     </footer>
     
     
-    
-     
-    
-    
-    
-
     <script src="{% static 'user/js/jquery.min.js' %}"></script>
     <script src="{% static 'user/js/popper.min.js' %}"></script>
     <script src="{% static 'user/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'user/js/app.js' %}"></script>
-    <script src="{% static 'user/js/common.js' %}"></script>
+    <script src="{% static 'user/js/common.js' %}"></script>    
     <script src="{% static 'user/js/js.js' %}"></script>
     
     

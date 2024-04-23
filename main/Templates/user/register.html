@@ -68,32 +68,15 @@
 
 
     <div class="containerregister">
-    <h2>Đăng Ký</h2>
-    <form action="" method="POST">
-        {% csrf_token %}
-        <!-- Hiển thị thông báo lỗi -->
-        {% comment %} {% if messages %}
-            <ul class="errorlist">
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %} {% endcomment %}
-
-        <label for="username">Tài Khoản:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Mật Khẩu:</label>
-        <input type="password" id="password" name="password" required>
-        
-        <label for="confirm_password">Nhập Lại Mật Khẩu:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required>
-
-        <button type="submit">Đăng Ký</button>
-    </form>
-    <p>Bạn đã có tài khoản? <a href="{% url 'login' %}">Đăng Nhập</a></p>
-</div>
-
+        <h2>Đăng Ký</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Đăng Ký</button>
+        </form>
+        <p>Bạn đã có tài khoản? <a href="{% url 'login' %}">Đăng Nhập</a></p>
+    </div>
+    
     
 
 

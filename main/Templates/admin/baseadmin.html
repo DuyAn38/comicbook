@@ -5,13 +5,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
+  <title>Admin Comic</title>
 
-
-  
-  <link rel="shortcut icon" type="image/png" href="{% static 'admin/images/logos/favicon.png' %}" />
   <link rel="stylesheet" href="{% static 'admin/css/styles.min.css' %}" />
   <link rel="stylesheet" href="{% static 'admin/css/styles.css' %}" />
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
@@ -53,7 +54,7 @@
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{% url 'comic' %}" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'comicadmin' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -61,12 +62,12 @@
               </a>
             </li>
 
-            <li class "sidebar-item">
-              <a class ="sidebar-link" href="{% url 'chap ' %}" aria-expanded="false">
-                  <span>
-                  <i class ="ti ti-article "></i>
-                  </span>
-                  <span class="hide-menu">Chap</span>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{% url 'chapadmin' %}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Chap</span>
               </a>
             </li>
 
@@ -77,7 +78,7 @@
             </li>
 
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{% url 'user' %}" aria-expanded="false">
+              <a class="sidebar-link" href="{% url 'useradmin' %}" aria-expanded="false">
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
@@ -103,11 +104,16 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Thông Tin Cá Nhân</p>
+
+                    <a href="{% url 'infomation' %}" class="d-flex align-items-center gap-2 dropdown-item">
+                        <p class="mb-0 fs-3">Thông Tin Cá Nhân</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Đăng Xuất</a>
+
+                    <a href="{% url 'follow' %}" class="d-flex align-items-center gap-2 dropdown-item">
+                      <p class="mb-0 fs-3">Truyện Theo Dõi</p>
+                    </a>
+
+                    <a href="{% url 'logout' %}" class="btn btn-outline-primary mx-3 mt-2 d-block">Đăng Xuất</a>
                   </div>
                 </div>
               </li>
@@ -123,7 +129,7 @@
       {% block test %}{% endblock test %}
       {% block comic %}{% endblock comic %}
       {% block user %}{% endblock user %}
-      {% block chaper %}{% endblock chaper %}
+      {% block chap %}{% endblock chap %}
 </div>
 
 

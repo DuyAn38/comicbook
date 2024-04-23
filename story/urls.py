@@ -1,19 +1,3 @@
-"""
-URL configuration for story project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
 from main import views as main
@@ -21,28 +5,31 @@ from django.contrib.auth import views as auth_views
 
 
 
+
 urlpatterns = [
+    #member
     path('admin/', admin.site.urls),
-
-    path('base',main.base),
-    path('',main.home, name="home"),
-    path('category',main.category),
-    path('detai',main.detai),
-    path('chap',main.chap),
-    path('information',main.information, name = "infomation"),
-
-
+    path('base/',main.base,name='base'),
+    path('',main.home, name='home'),
+    path('categoryuser/',main.categoryuser, name = 'categoryuser'),
+    path('detai/',main.detai),
+    path('readcomic/',main.readcomic, name = "readcomic"),
+    path('information/',main.information, name = "infomation"),
+    path('changepassword/', main.changepassword, name='changepassword'),
+    path('search/',main.search, name = "search"),
+    path('follow/',main.follow, name = "follow"),
     path('logout/', main.logout_view, name='logout'),
     path('login/', main.login_view, name='login'),
-    path('register/', main.register_view, name='register'),
+    path('register/', main.register, name='register'),
+    
 
     #admin
     path('baseadmin/', main.baseadmin, name = 'baseadmin'),
     path('homeadmin/', main.homeadmin, name = 'homeadmin'),
     path('categoryadmin/', main.categoryadmin, name = 'categoryadmin'),
-    path('comic/', main.comic, name = 'comic'),
-    path('user/', main.user, name = 'user'),
-    path('chap/', main.chap, name = 'chap'),
+    path('comicadmin/', main.comicadmin, name = 'comicadmin'),
+    path('user/', main.useradmin, name = 'useradmin'),
+    path('chap/', main.chapadmin, name = 'chapadmin'),
   
 
 

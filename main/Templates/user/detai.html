@@ -7,18 +7,18 @@
         <div class="wrapper">
             <div class="containerr">
                 <div class="story-header">
-                    <img src="{%static 'user/img/khong_phu_the_duyen.jpg' %}" alt="Ảnh truyện">
+                    <img src="{% static 'user/img/doremon/doremon.png' %}" alt="Ảnh truyện">
                     <div class="story-info">
-                        <h1>Tên truyện</h1>
-                        <p><strong>Tác giả:</strong> Thâm Bích Sắc</p>
-                        <p><strong>Thể loại:</strong> Tiểu thuyết, Huyền huyễn</p>
+                        <h3>Doremon</h3>
+                        <p><strong>Tác giả:</strong> Fujiko Fujio</p>
+                        <p><strong>Thể loại:</strong> Thiếu nhi</p>
                         <p><strong>Tình trạng:</strong> Đang tiến hành</p>
                         <p><strong>Lượt thích:</strong> 100</p>
                         <p><strong>Lượt theo dõi:</strong> 50</p>
                         <p><strong>Lượt xem:</strong> 5000</p>
                         <p><strong>Thể Loại:</strong> 5000</p>
 
-                        <!-- Trong phần HTML -->
+                       
                         <div class="buttons">
                             <button class="action-btn read-from-beginning">Đọc từ đầu</button>
                             <button class="action-btn follow">Theo dõi</button>
@@ -30,144 +30,59 @@
 
 
                 </div>
+                <h4>Nội dung truyện: Doremon</h4>
                 <div class="story-introduction">
                     <p>
-                        Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện Giới thiệu về truyện 
+                        Doraemon là series truyện tranh kể về chú mèo máy Doraemon đến từ thế kỷ 22 để giúp một cậu bé học sinh tiểu học hậu đậu tên là Nobita. Các mẩu truyện Doraemon thường ngắn gọn, dễ hiểu, dí dỏm và mang cái nhìn đầy lạc quan về cuộc sống tương lai cũng như sự phát triển của khoa học – kỹ thuật.
                     </p>
                 </div>
                 
-                <div class="chapter-list ">
-                    <h2>Danh sách chương</h2>
-                    <ul>
-                        <li><a href="#">Chương 1: Tên chương       </a></li>
-                        <li><a href="#">Chương 2: Tên chương       </a></li>
-                        <li><a href="#">Chương 3: Tên chương       </a></li>
-                        
+                <div class="chapter-list">
+                    <h4 class="chapter-list__title">Danh sách chương</h4>
+                    <ul class="chapter-list__items">
+                        <li class="chapter-list__item"><a href="#">Chương 1</a></li>
+                        <li class="chapter-list__item"><a href="#">Chương 2</a></li>
+                        <li class="chapter-list__item"><a href="#">Chương 3</a></li>
                     </ul>
                 </div>
+
+                <style>
+                    .chapter-list {
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        border-radius: 5px;
+                    }
+                    
+                    .chapter-list__title {
+                        font-size: 18px;
+                        margin-bottom: 10px;
+                        color: #333;
+                    }
+                    
+                    .chapter-list__items {
+                        list-style: none;
+                        padding: 0;
+                    }
+                    
+                    .chapter-list__item {
+                        margin-bottom: 5px;
+                    }
+                    
+                    .chapter-list__item a {
+                        text-decoration: none;
+                        color: #007bff;
+                        transition: color 0.3s ease;
+                    }
+                    
+                    .chapter-list__item a:hover {
+                        color: #0056b3;
+                    }
+                    
+                </style>
+                
             </div>
         </div>
 
-
-        <style>
-            
-            body {
-                background-color: #f5f5f5;
-                margin: 0;
-                padding: 0;
-            }
-            
-            .wrapper {
-                background-color: #fff;
-                box-shadow: 0 0 10px rgba(0,0,0,0.1);
-                margin: 20px auto;
-                padding: 20px;
-                max-width: 900px;
-            }
-            
-            .containerr {
-                margin: 10 auto;
-                
-            }
-            
-            .story-header {
-                display: flex;
-                align-items: flex-start;
-            }
-            
-            .story-header img {
-                width: 200px;
-                height: auto;
-                margin-right: 20px;
-            }
-            
-            .story-info {
-                flex-grow: 1;
-            }
-            
-            .story-info p {
-                margin: 5px 0;
-            }
-            
-            .buttons {
-                margin-top: 10px;
-            }
-            
-            .buttons button {
-                padding: 10px 20px;
-                margin-right: 10px;
-                border: none;
-                cursor: pointer;
-            }
-            
-            .read-from-beginning {
-                background-color: #26b926;
-                color: white;
-            }
-            
-            .follow {
-                background-color: #e70f35;
-                color: white;
-            }
-            
-            .like {
-                background-color: #0b62dd;
-                color: white;
-            }
-            
-            .chapter-list {
-                margin-top: 20px;
-            }
-            
-            .chapter-list ul {
-                list-style-type: none;
-                padding: 0;
-            }
-            
-            .chapter-list li {
-                margin-bottom: 10px;
-            }
-            
-            .chapter-list li a {
-                text-decoration: none;
-                color: #333;
-            }
-            
-            .chapter-list li a:hover {
-                text-decoration: underline;
-                color: #007bff;
-            }
-
-            /* Trong phần CSS */
-            .buttons {
-                margin-top: 10px;
-                display: flex;
-            }
-
-            .action-btn {
-                flex-grow: 1;
-                padding: 10px 20px;
-                margin-right: 10px;
-                border: none;
-                cursor: pointer;
-            }
-
-            .read-from-beginning {
-                background-color: #26b926;
-                color: white;
-            }
-
-            .follow {
-                background-color: #e70f35;
-                color: white;
-            }
-
-            .like {
-                background-color: #0b62dd;
-                color: white;
-            }
-
-        </style>
     </main>
 
 

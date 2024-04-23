@@ -32,104 +32,93 @@
         
 
         <div id="change-password" class="info-section">
-            <!-- Đổi mật khẩu -->
+            
             <h2>Đổi mật khẩu</h2>
-            <p>...</p>
+            <div class="info-item">
+                <label for="current-password">Mật khẩu hiện tại:</label>
+                <input type="password" id="current-password" name="current-password">
+            </div>
+            <div class="info-item">
+                <label for="new-password">Mật khẩu mới:</label>
+                <input type="password" id="new-password" name="new-password">
+            </div>
+            <div class="info-item">
+                <label for="confirm-password">Nhập lại mật khẩu mới:</label>
+                <input type="password" id="confirm-password" name="confirm-password">
+            </div>
+            <div class="info-item">
+                <button id="change-password-btn">Đổi mật khẩu</button>
+            </div>
         </div>
+
+        <script>
+            // Lấy CSRF token từ cookies
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Kiểm tra nếu tìm thấy CSRF token
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+$(document).ready(function() {
+    $('#change-password-btn').click(function() {
+        var currentPassword = $('#current-password').val();
+        var newPassword = $('#new-password').val();
+        var confirmPassword = $('#confirm-password').val();
+
+        // Lấy CSRF token
+        var csrftoken = getCookie('csrftoken');
+
+        // Perform validation checks
+        if (currentPassword === '' || newPassword === '' || confirmPassword === '') {
+            alert('Vui lòng điền đầy đủ thông tin.');
+            return;
+        }
+
+        if (newPassword !== confirmPassword) {
+            alert('Mật khẩu mới và xác nhận mật khẩu không khớp.');
+            return;
+        }
+        $.ajax({
+            url: '/changepassword/',
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
+            data: {
+                current_password: currentPassword,
+                new_password: newPassword,
+                confirm_password: confirmPassword
+            },
+            success: function(response) {
+                alert('Mật khẩu đã được thay đổi thành công.');
+            },
+            error: function(xhr, status, error) {
+                alert('Đã xảy ra lỗi: ' + error);
+            }
+        });
+    });
+});
+
+            
+        </script>
+        
+        
     </div>
 </div>
 
-<style>
-    .profile-container {
-        display: flex;
-        max-width: 900px;
-        margin: 20px auto; 
-    }
-    
-    
-    
-    .left-sidebar {
-        width: 30%; 
-        padding: 20px;
-        background-color: #f2f2f2;
-    }
-    
-    .right-content {
-        flex: 1;
-        padding: 20px;
-    }
-    
-    .profile-picture {
-        border-radius: 50%;
-        width: 200px;
-        height: 200px;
-        margin-bottom: 20px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .sidebar-menu {
-        list-style-type: none;
-        padding: 0;
-    }
-    
-    .sidebar-menu li {
-        margin-bottom: 10px;
-    }
-    
-    .sidebar-menu a {
-        color: #333;
-        text-decoration: none;
-        display: block;
-        padding: 8px 16px;
-        transition: background-color 0.3s ease;
-    }
-    
-    .sidebar-menu a:hover {
-        background-color: #ddd;
-    }
-    
-    .info-section {
-        display: none;
-    }
-    
-    .info-section.active {
-        display: block;
-    }
-    
-    .info-section h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
-    
-    .info-section p {
-        font-size: 16px;
-        line-height: 1.6;
-    }
-
-    .sidebar-menu a.active {
-        font-weight: bold;
-    }
-
-    
-    .info-item {
-        margin-bottom: 10px;
-    }
-    
-    .info-item strong {
-        font-weight: bold;
-        margin-right: 5px;
-    }
-    
-    
-
-</style>
-
-
 
 <script>
-    // Thêm sự kiện click cho các mục trong menu
+    
 document.addEventListener("DOMContentLoaded", function() {
     const menuItems = document.querySelectorAll('.sidebar-menu a');
 
@@ -139,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const targetId = this.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
 
-            // Ẩn tất cả các phần thông tin
+            
             document.querySelectorAll('.info-section').forEach(section => {
                 section.classList.remove('active');
             });
