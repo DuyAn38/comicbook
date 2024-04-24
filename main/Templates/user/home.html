@@ -105,160 +105,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-stories-hot__list">
-                    
+                    {% for comic in comics %}
                     <div class="story-item">
                         <a href="story.html" class="d-block text-decoration-none">
                             <div class="story-item__image">
-                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
+                                <img src="{{ comic.ImageURL }}" alt="Tự Cẩm" class="img-fluid" width="150"
                                     height="230" loading="lazy">
                             </div>
-                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
-
-                            
+                            <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
                         </a>
                     </div>
+                    {% endfor %}
 
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-                        </a>
-                    </div>
 
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/doremon/doremon.png' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Doremon</h3>
-                            
-                        </a>
-                    </div>
-        
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/dauphathuongkhung/dau_pha_thuong_khung.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Đấu Phá Thương Khung</h3>
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="story.html" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                    height="230" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
-
-                            
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/doremon/doremon.png' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Doremon</h3>
-                            
-                        </a>
-                    </div>
-        
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/dauphathuongkhung/dau_pha_thuong_khung.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Đấu Phá Thương Khung</h3>
-                           
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="story.html" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                    height="230" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
-
-                            
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/doremon/doremon.png' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Doremon</h3>
-                            
-                        </a>
-                    </div>
-        
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/dauphathuongkhung/dau_pha_thuong_khung.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Đấu Phá Thương Khung</h3>
-                            
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/dauphathuongkhung/dau_pha_thuong_khung.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Đấu Phá Thương Khung</h3>
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="story.html" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                    height="230" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
-
-                            
-                        </a>
-                    </div>
-
-                    <div class="story-item">
-                        <a href="#" class="d-block text-decoration-none">
-                            <div class="story-item__image">
-                                <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
-                            </div>
-                            <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-                        </a>
-                    </div>
-
-                    
                 </div>
             </div>
         </div>
