@@ -45,7 +45,7 @@
     toggle() {
       // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
       this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE));
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

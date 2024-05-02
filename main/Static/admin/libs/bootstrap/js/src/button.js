@@ -38,7 +38,7 @@ class Button extends BaseComponent {
     this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE))
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Button.getOrCreateInstance(this)

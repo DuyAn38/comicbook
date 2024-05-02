@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from django.contrib.auth import authenticate, login, logout
@@ -15,14 +16,10 @@ from .py.user.readcomic import readcomic
 from .py.user.follow import follow
 
 #admin
-from .py.admin.baseadmin import baseadmin,homeadmin
-from .py.admin.categoryadmin import categoryadmin
-from .py.admin.comicadmin import comicadmin
-from .py.admin.useradmin import useradmin
-from .py.admin.chapadmin import chapadmin
+from .py.admin.baseadmin import baseadmin
+from .py.admin.categoryadmin import categoryadmin, add_category, edit_category,delete_category
+from .py.admin.comicadmin import comicadmin, add_comic, edit_comic, delete_comic
+from .py.admin.useradmin import useradmin, add_user, edit_user, delete_user
+from .py.admin.chapadmin import chapadmin, add_chap, edit_chap, delete_chap
 
-
-
-
-
-
+import urllib.request

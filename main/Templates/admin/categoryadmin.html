@@ -1,43 +1,73 @@
 {% extends 'admin/baseadmin.html' %}
 {% load static %}
 {% block categorya %}
-
-<div class="container-fluid">
+    {% include 'admin/message.html' %}
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="card-title fw-semibold mb-0">Thể Loại Truyện</h5>
-                    <button type="button" class="btn btn-success">Thêm Thể Loại</button>
-                </div>
-                
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="card-title fw-semibold mb-0">Thể Loại Truyện</h5>
+                        <a href="{% url 'add_category' %}" class="btn btn-success">Thêm Thể Loại</a>
+                    </div>
 
-                {% for category in categories %}
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <p>{{ category.name }}</p>
-                            </div>
-                            <div class="col">
-                                <p>{{ category.slug }}</p>
-                            </div>
+                    {% for category in categories %}
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <p>{{ category.name }}</p>
+                                    </div>
+                                    <div class="col">
+                                        <p>{{ category.slug }}</p>
+                                    </div>
 
 
-                            <div class="col-4 d-flex justify-content-end text-end">
-                                <button type="button" class="btn btn-primary me-2">Sửa</button>
-                                <button type="button" class="btn btn-danger">Xóa</button>
+                                    <div class="col-4 d-flex justify-content-end text-end">
+                                        <a href="{% url 'edit_category' category.id %}"
+                                           class="btn btn-primary me-2">Sửa</a>
+
+                                        <a class="btn btn-danger"
+                                           data-toggle="modal"
+                                           data-target="#deleteCategoryModal_{{ category.id }}">Xóa</a>
+
+                                        <div class="modal" id="deleteCategoryModal_{{ category.id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Xóa Thể Loại</h5>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Bạn có chắc chắn muốn xóa thể loại
+                                                            "{{ category.name }}"?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Hủy
+                                                        </button>
+                                                        <form action="{% url 'delete_category' category.id %}"
+                                                              method="post">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-danger">Xóa
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endfor %}
+
                 </div>
-                {% endfor %}
-
-                
-
             </div>
         </div>
     </div>
-</div>
 
 {% endblock categorya %}

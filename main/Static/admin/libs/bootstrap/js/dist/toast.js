@@ -205,7 +205,7 @@
     _clearTimeout() {
       clearTimeout(this._timeout);
       this._timeout = null;
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

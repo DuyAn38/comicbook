@@ -4480,7 +4480,7 @@
 	    this.init();
 	  }
 	  /**
-	   * Static properties
+	   * static properties
 	   */
 
 	  /**

@@ -1,0 +1,35 @@
+{% extends 'admin/baseadmin.html' %}
+{% load static %}
+{% block updatecategory %}
+    {% include 'admin/message.html' %}
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-4">Sửa Thể Loại</h2>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="categoryDescription">Tên Thể Loại</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Đường Dẫn</label>
+                            {{ form.slug }}
+                        </div>
+                        <div class="mt-4 d-flex justify-content-end">
+                            <button onclick="window.location.href={% url 'categoryadmin' %}" style="margin-right: 20px;" type="button" class="btn btn-warning mr-4">Quay lại</button>
+                            <button type="submit" class="btn btn-primary ml-4">Lưu thông tin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock updatecategory %}

@@ -313,7 +313,7 @@ class Modal extends BaseComponent {
     this._element.style.paddingRight = ''
   }
 
-  // Static
+  // static
   static jQueryInterface(config, relatedTarget) {
     return this.each(function () {
       const data = Modal.getOrCreateInstance(this, config)

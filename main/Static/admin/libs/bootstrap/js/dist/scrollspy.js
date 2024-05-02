@@ -270,7 +270,7 @@
       for (const node of activeNodes) {
         node.classList.remove(CLASS_NAME_ACTIVE);
       }
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

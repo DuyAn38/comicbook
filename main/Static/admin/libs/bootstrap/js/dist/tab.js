@@ -277,7 +277,7 @@
 
     _getOuterElement(elem) {
       return elem.closest(SELECTOR_OUTER) || elem;
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

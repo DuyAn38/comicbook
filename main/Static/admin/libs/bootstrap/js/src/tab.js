@@ -254,7 +254,7 @@ class Tab extends BaseComponent {
     return elem.closest(SELECTOR_OUTER) || elem
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Tab.getOrCreateInstance(this)

@@ -208,7 +208,7 @@ class Offcanvas extends BaseComponent {
     })
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Offcanvas.getOrCreateInstance(this, config)

@@ -34,7 +34,7 @@ describe('Base Component', () => {
     clearFixture()
   })
 
-  describe('Static Methods', () => {
+  describe('static Methods', () => {
     describe('VERSION', () => {
       it('should return version', () => {
         expect(DummyClass.VERSION).toEqual(jasmine.any(String))

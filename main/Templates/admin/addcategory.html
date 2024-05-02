@@ -1,43 +1,37 @@
+{% extends 'admin/baseadmin.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Thêm Thể Loại</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+{% block addcategory %}
 
-<div class="container mt-4" style="width: 550px">
-  <h2 class="mb-4">Thêm danh mục sản phẩm</h2>
-  <form method="POST" action="" enctype="multipart/form-data">
-    
 
-    <div class="form-group">
-      <label for="categoryDescription">Tên Danh Mục</label>
-         tên
-    </div>
-      <div class="form-group">
-      <label for="categoryDescription">Đường Dẫn</label>
-        slug
-    </div>
-    <div class="form-group">
-        <label for="{{ form.image.id_for_label }}">Chọn ảnh: </label>
-        <div class="input-group">
-            <div class="custom-file">
-                {{ form.image }}
-                <label class="custom-file-label" for="{{ form.image.id_for_label }}"> </label>
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-4">Thêm Thể Loại Truyện</h2>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="categoryDescription">Tên Thể Loại</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Đường Dẫn</label>
+                            {{ form.slug }}
+                        </div>
+                        <div class="mt-4 d-flex justify-content-end">
+                            <button onclick="window.location.href={% url 'categoryadmin' %}" class="btn btn-warning mr-4">Quay lại</button>
+
+                            <button type="submit" class="btn btn-primary ml-4">Lưu thông tin</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Thêm thể loại</button>
 
-  </form>
 
-</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+{% endblock addcategory %}

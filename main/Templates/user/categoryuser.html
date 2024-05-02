@@ -1,0 +1,22 @@
+{% extends 'user/base.html' %}
+{% load static %}
+{% block category %}
+
+<div class="home-container">
+    <h4> Thể loại: {{ key }}</h4>
+    
+    <div class="section-stories-hot__list" id="storyCarousel">
+        {% for comic in comics %}
+        <div class="story-item">
+            <a href="{% url 'detai' %}?id={{ comic.id }}" class="d-block text-decoration-none">
+                <div class="story-item__image">
+                    <img src="{{ comic.ImageURL }}" alt="tucam" loading="lazy">
+                </div>
+                <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock category %}

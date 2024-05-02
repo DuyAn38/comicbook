@@ -6,10 +6,18 @@
 .container {
     max-width: 900px;
     margin: 0 auto;
-    
-   
     border-radius: 10px;
 }
+
+.username {
+    font-weight: bold;
+    text-align: center; 
+    display: block; 
+    margin-top: 10px; 
+    color: black;
+}
+
+
 /* css home */
 .home-container {
     max-width: 900px;

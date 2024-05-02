@@ -69,7 +69,7 @@
 
     _getContent() {
       return this._resolvePossibleFunction(this._config.content);
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

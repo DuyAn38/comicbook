@@ -65,7 +65,7 @@
       this._typeCheckConfig(config);
 
       return config;
-    } // Static
+    } // static
 
 
     static getInstance(element) {

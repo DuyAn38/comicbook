@@ -606,7 +606,7 @@ class Tooltip extends BaseComponent {
     }
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Tooltip.getOrCreateInstance(this, config)

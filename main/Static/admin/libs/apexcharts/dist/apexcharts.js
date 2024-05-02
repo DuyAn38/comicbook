@@ -29509,7 +29509,7 @@
       create: 'filter',
       inherit: SVG.Parent,
       extend: {
-        // Static strings
+        // static strings
         source:           'SourceGraphic',
         sourceAlpha:      'SourceAlpha',
         background:       'BackgroundImage',

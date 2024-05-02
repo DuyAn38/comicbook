@@ -70,7 +70,7 @@ class Popover extends Tooltip {
     return this._resolvePossibleFunction(this._config.content)
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Popover.getOrCreateInstance(this, config)

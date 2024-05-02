@@ -10,6 +10,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
+
 #the loai
 class category(models.Model):
     sub_category = models.ForeignKey('self', on_delete=models.CASCADE, related_name='sub_genre', null=True, blank=True)
@@ -22,7 +23,7 @@ class category(models.Model):
 class comic(models.Model):
     name = models.CharField(max_length=200, null=True)
     slug = models.CharField(max_length=200, null=True,blank=True)
-    category = models.ManyToManyField(category, related_name='story_category', blank=True)
+    categories = models.ManyToManyField(category, related_name='story_category', blank=True)
     image = models.ImageField(null=True, blank=True)
     author = models.CharField(max_length=200, null=True)                               
     status = models.BooleanField(default=False, null=True, blank=False)
@@ -67,8 +68,7 @@ class ImagesChap(models.Model):
             url = ''
         return url
 
-    def __str__(self):
-        return self.chap.story.name
+
 
 #thanh vien
 class member(models.Model):
@@ -114,3 +114,59 @@ class Comment(models.Model):
     date = models.DateTimeField(default=timezone.now, blank=True, null=True)
     def __str__(self):
         return self.story
+
+
+
+class CategoryForm(forms.ModelForm):
+    class Meta:
+        model = category
+        fields = ['sub_category', 'is_sub', 'name', 'slug']
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ComicForm(forms.ModelForm):
+    class Meta:
+        model = comic
+        fields = ['name', 'slug', 'categories', 'image', 'author', 'status', 'Describe', 'story_new']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+            'categories': forms.CheckboxSelectMultiple(),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'author': forms.TextInput(attrs={'class': 'form-control'}),
+            'Describe': forms.TextInput(attrs={'class': 'form-control'}),
+            'status': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+class ChapForm(forms.ModelForm):
+    class Meta:
+        model = Chap
+        fields = ['story', 'image', 'name']
+        widgets = {
+            'story': forms.Select(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+
+        }
+
+class ImageChap(forms.ModelForm):
+    class Meta:
+        model = Chap
+        fields = [ 'image']
+
+
+class UserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name', 'password1','password2']
+        widgets = {
+            'username': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'password1': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 100%'}),
+            'password2': forms.TextInput(attrs={'class': 'form-control'}),
+        }

@@ -4,8 +4,6 @@
 
     <div class="container">
         <h1 class="text-center">Tên Truyện</h1>
-
-        
         <div class="text-center mb-4">
             <button type="button" class="btn btn-primary"> <</button>
             <select class="custom-select" id="chap-selector">
@@ -18,17 +16,31 @@
             <button type="button" class="btn btn-primary"> > </button>
         </div>
 
-        
-        <div class="text-center">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
-            <img src="{% static 'user/img/1chap.jpg' %}" class="img-fluid" alt="Hình ảnh truyện">
+        <div class="row">
+            
+                {% for img in images %}
+              
+                    <img src="{{ img.ImageURL }}" alt="">
+               
+                {% endfor %}
+            
         </div>
-
+        
+        <div class="text-center mb-4">
+            <button type="button" class="btn btn-primary"> <</button>
+            <select class="custom-select" id="chap-selector">
+                <option selected>Chọn chap</option>
+                {% for chap in chapters %}
+                <option value="{% url 'readcomic' chapter_slug=comic.slug %}?chap={{ chap.id }}">{{ chap.name }}</option>
+                {% endfor %}
+            </select>
+            
+            
+            <button type="button" class="btn btn-primary"> > </button>
+        </div>
+        
+        
+        
         
 
         

@@ -221,7 +221,7 @@
 
         this.hide();
       });
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

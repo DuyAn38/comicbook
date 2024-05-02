@@ -333,7 +333,7 @@
     _resetAdjustments() {
       this._element.style.paddingLeft = '';
       this._element.style.paddingRight = '';
-    } // Static
+    } // static
 
 
     static jQueryInterface(config, relatedTarget) {

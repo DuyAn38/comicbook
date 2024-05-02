@@ -2,27 +2,22 @@
 {% load static %}
 {% block Search %}
 
-
-
-
-
 <div class="home-container">
-    <h4> Kết quả tìm kiếm: Thần đồng</h4>
+    <h4> Kết quả tìm kiếm: {{ key }}</h4>
     
-
     <div class="section-stories-hot__list" id="storyCarousel">
-        
-        <div class="story-item">
-            <a href="#" class="d-block text-decoration-none">
-                <div class="story-item__image">
-                    <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
+        {% if  list_search %}
+            {% for comic in list_search %}
+                <div class="story-item">
+                    <a href="{% url 'detai' %}?slug={{ comic.slug }}" class="d-block text-decoration-none">
+                        <div class="story-item__image">
+                            <img src="{{ comic.ImageURL }}" alt="tucam" loading="lazy">
+                        </div>
+                        <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
+                    </a>
                 </div>
-                <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-            </a>
-        </div>
-
-
-        
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
 

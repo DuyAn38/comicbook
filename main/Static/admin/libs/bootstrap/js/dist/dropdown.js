@@ -353,7 +353,7 @@
 
 
       index.getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

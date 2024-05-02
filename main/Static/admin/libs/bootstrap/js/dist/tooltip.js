@@ -615,7 +615,7 @@
         this.tip.remove();
         this.tip = null;
       }
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

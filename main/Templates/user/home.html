@@ -1,18 +1,15 @@
 {% extends 'user/base.html' %}
 {% load static %}
 {% block home %}
+        {% include 'admin/message.html' %}
    <main>
-
-    
-   
 
     <div class="home-container">
         <div class="row">
             <div class="head-title-global d-flex justify-content-between mb-2">
                 <div class="col-4 col-md-3 col-lg-2 head-title-global__left d-flex align-items-center">
                     <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
-                        <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
-                            title="Truyện Hot">Truyện Hot</a>
+                        <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name" title="Truyện Hot">Truyện Hot</a>
                     </h2>
                     <i class="fa-solid fa-fire-flame-curved"></i>
                 </div>
@@ -33,56 +30,7 @@
                 </a>
             </div>
 
-            <div class="story-item">
-                <a href="#" class="d-block text-decoration-none">
-                    <div class="story-item__image">
-                        <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
-                    </div>
-                    <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-                    <div class="list-badge">
-                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                    </div>
-                </a>
-            </div>
 
-            <div class="story-item">
-                <a href="#" class="d-block text-decoration-none">
-                    <div class="story-item__image">
-                        <img src="{% static 'user/img/doremon/doremon.png' %}" alt="tucam" loading="lazy">
-                    </div>
-                    <h3 class="story-item__name text-one-row story-name">Doremon</h3>
-                    <div class="list-badge">
-                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="story-item">
-                <a href="#" class="d-block text-decoration-none">
-                    <div class="story-item__image">
-                        <img src="{% static 'user/img/dauphathuongkhung/dau_pha_thuong_khung.jpg' %}" alt="tucam" loading="lazy">
-                    </div>
-                    <h3 class="story-item__name text-one-row story-name">Đấu Phá Thương Khung</h3>
-                    <div class="list-badge">
-                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="story-item">
-                <a href="#" class="d-block text-decoration-none">
-                    <div class="story-item__image">
-                        <img src="{% static 'user/img/thandongdatviet/than-dong-dat-viet.jpg' %}" alt="tucam" loading="lazy">
-                    </div>
-                    <h3 class="story-item__name text-one-row story-name">Thần Đồng Đất Việt</h3>
-                    <div class="list-badge">
-                        <span class="story-item__badge story-item__badge-hot badge text-bg-danger">Hot</span>
-                    </div>
-                </a>
-            </div>
-            
-
-            
         </div>
     </div>
     
@@ -107,20 +55,19 @@
                 <div class="section-stories-hot__list">
                     {% for comic in comics %}
                     <div class="story-item">
-                        <a href="story.html" class="d-block text-decoration-none">
+                        <a href="{% url 'detai' %}?slug={{ comic.slug }}" class="d-block text-decoration-none">
                             <div class="story-item__image">
-                                <img src="{{ comic.ImageURL }}" alt="Tự Cẩm" class="img-fluid" width="150"
-                                    height="230" loading="lazy">
+                                <img src="{{ comic.ImageURL }}" alt="" class="img-fluid" width="150" height="230" loading="lazy">
                             </div>
                             <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
                         </a>
                     </div>
                     {% endfor %}
-
-
                 </div>
             </div>
         </div>
+        
+
     </div>
 
     {% comment %} page {% endcomment %}

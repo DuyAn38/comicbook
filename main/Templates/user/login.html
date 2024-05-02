@@ -2,6 +2,7 @@
 {% extends 'user/base.html' %}
 {% load static %}
 {% block login %}
+        {% include 'admin/message.html' %}
     <style>
         .containerlogin {
             background-image: url("{% static 'user/img/background1.jpg' %}");
@@ -11,29 +12,29 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
+            display: flex; /* Sử dụng hiển thị flex để sử dụng margin-left: auto; */
             flex-direction: column;
             align-items: center;
             background-size: cover;
             background-position: center;
         }
-    
+        
         .containerlogin h2 {
             margin-top: 0;
             margin-bottom: 20px;
             color: #22c4eb;
         }
-    
+        
         .containerlogin form {
             width: 100%;
         }
-    
+        
         .containerlogin label {
             display: block;
             margin-bottom: 10px;
             color: #22c4eb;
         }
-    
+        
         .containerlogin input[type="text"],
         .containerlogin input[type="password"] {
             width: 100%;
@@ -43,25 +44,29 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
-    
-        .containerlogin button[type="submitlogin"] {
+        
+        .containerlogin button[type="submit"] {
             padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
+            margin-left: 235px;
         }
-    
-        .containerlogin button[type="submitlogin"]:hover {
+        
+        .containerlogin button[type="submit"]:hover {
             background-color: #0056b3;
         }
-    
+        
         .containerlogin p {
             margin-top: 20px;
             color: #333; /* Màu chữ cho đoạn văn */
         }
+        
+
+        
+        
         
     </style>
 

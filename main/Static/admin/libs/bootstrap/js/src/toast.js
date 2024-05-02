@@ -194,7 +194,7 @@ class Toast extends BaseComponent {
     this._timeout = null
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Toast.getOrCreateInstance(this, config)

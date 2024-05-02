@@ -56,7 +56,7 @@ class BaseComponent extends Config {
     return config
   }
 
-  // Static
+  // static
   static getInstance(element) {
     return Data.get(getElement(element), this.DATA_KEY)
   }

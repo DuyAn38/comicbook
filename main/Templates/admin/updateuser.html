@@ -1,0 +1,74 @@
+{% extends 'admin/baseadmin.html' %}
+{% load static %}
+{% block homeadmin %}
+
+    {% include 'admin/message.html' %}
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-4">Sửa thông tin người dùng</h2>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="categoryDescription">Tên Người Dùng</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Email</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Họ</label>
+                            {{ form.first_name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Tên</label>
+                            {{ form.last_name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Mật Khẩu</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Nhập Lại Mật Khẩu</label>
+                            {{ form.password2 }}
+                        </div>
+
+
+                        <div class="mt-4 d-flex justify-content-end">
+                            <button onclick="window.location.href={% url 'useradmin' %}" style="margin-right: 20px;" type="button" class="btn btn-warning mr-4">Quay lại</button>
+                            <button type="submit" class="btn btn-primary ml-4">Lưu thông tin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+    #id_categories {
+        display: flex;
+        justify-content: space-around;
+    }
+    #id_password1, #id_password2 {
+        display: block;
+        width: 100%;
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock homeadmin %}

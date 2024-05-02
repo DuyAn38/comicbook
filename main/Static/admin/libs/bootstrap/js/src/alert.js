@@ -54,7 +54,7 @@ class Alert extends BaseComponent {
     this.dispose()
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Alert.getOrCreateInstance(this)

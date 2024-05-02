@@ -405,7 +405,7 @@ class Carousel extends BaseComponent {
     return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = Carousel.getOrCreateInstance(this, config)

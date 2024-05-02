@@ -701,7 +701,7 @@
       return config;
     }
 
-    // Static
+    // static
     static getInstance(element) {
       return Data.get(getElement(element), this.DATA_KEY);
     }
@@ -881,7 +881,7 @@
       this.dispose();
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Alert.getOrCreateInstance(this);
@@ -943,7 +943,7 @@
       this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Button.getOrCreateInstance(this);
@@ -1084,7 +1084,7 @@
       return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
     }
 
-    // Static
+    // static
     static isSupported() {
       return 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
     }
@@ -1406,7 +1406,7 @@
       return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Carousel.getOrCreateInstance(this, config);
@@ -1655,7 +1655,7 @@
       }
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       const _config = {};
       if (typeof config === 'string' && /show|hide/.test(config)) {
@@ -1968,7 +1968,7 @@
       getNextActiveElement(items, target, key === ARROW_DOWN_KEY$1, !items.includes(target)).focus();
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Dropdown.getOrCreateInstance(this, config);
@@ -2635,7 +2635,7 @@
       this._element.style.paddingRight = '';
     }
 
-    // Static
+    // static
     static jQueryInterface(config, relatedTarget) {
       return this.each(function () {
         const data = Modal.getOrCreateInstance(this, config);
@@ -2855,7 +2855,7 @@
       });
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Offcanvas.getOrCreateInstance(this, config);
@@ -3637,7 +3637,7 @@
       }
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Tooltip.getOrCreateInstance(this, config);
@@ -3717,7 +3717,7 @@
       return this._resolvePossibleFunction(this._config.content);
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Popover.getOrCreateInstance(this, config);
@@ -3966,7 +3966,7 @@
       }
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = ScrollSpy.getOrCreateInstance(this, config);
@@ -4215,7 +4215,7 @@
       return elem.closest(SELECTOR_OUTER) || elem;
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Tab.getOrCreateInstance(this);
@@ -4415,7 +4415,7 @@
       this._timeout = null;
     }
 
-    // Static
+    // static
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Toast.getOrCreateInstance(this, config);

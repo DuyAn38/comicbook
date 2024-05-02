@@ -1,0 +1,64 @@
+{% extends 'admin/baseadmin.html' %}
+{% load static %}
+{% block addcomic %}
+
+
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-4">Thêm Truyện</h2>
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="categoryDescription">Tên Truyện</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Đường Dẫn</label>
+                            {{ form.slug }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Tác giả</label>
+                            {{ form.author }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Trạng thái</label>
+                            {{ form.status }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Mô tả</label>
+                            {{ form.Describe }}
+                        </div>
+                        <div class="form-group">
+                            <label for="categoryDescription">Ảnh</label>
+                            {{ form.image }}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categoryDescription">Thể Loại</label>
+                            {{ form.categories }}
+                        </div>
+                        <div class="mt-4 d-flex justify-content-end">
+
+                            <button onclick="window.location.href={% url 'comicadmin' %}" style="margin-right: 20px;" type="button" class="btn btn-warning mr-4">Quay lại
+                            </button>
+                            <button type="submit" class="btn btn-primary ml-4">Lưu thông tin</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<style>
+#id_categories {
+    display: flex;
+    justify-content: space-around;
+}
+</style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+{% endblock addcomic %}

@@ -4,6 +4,3 @@ from main.models import *
 
 def baseadmin(requert):
     return render(requert,'admin/baseadmin.html')
-
-def homeadmin(requert):
-    return render(requert,'admin/homeadmin.html')

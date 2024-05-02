@@ -2,35 +2,53 @@ from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from main.models import *
 
+
 def information(requert):
-    categories = category.objects.filter(is_sub=False)
+    users = User.objects.all()
+    print(users)
     context = {
-        'categories': categories,
+        'users': users
     }
-    return render(requert, 'user/information.html', context)
-    
+    return render(requert,'user/information.html', context)
 
 def register(request):
+    form = UserForm()
     if request.method == 'POST':
-        form = CreatememberForm(request.POST)
+        form = UserForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-          
-            return redirect('home')  
+            messages.success(request, 'Đăng ký thành công')
+            return redirect('login')
+        else:
+            messages.error(request, 'Đăng ký thất bại')
     else:
-        form = CreatememberForm()
-    return render(request, 'user/register.html', {'form': form})
+        form = UserForm()
+    context = {
+        'form': form,
+    }
+    return render(request, 'user/register.html', context)
+
+
 
 def changepassword(request):
     if request.method == 'POST':
-        current_password = request.POST.get('current_password')
-        new_password = request.POST.get('new_password')
-        confirm_password = request.POST.get('confirm_password')
-        return JsonResponse({'message': 'Mật khẩu đã được thay đổi thành công.'})
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            messages.success(request, 'Mật khẩu của bạn đã được thay đổi thành công!')
+            return redirect('changepassword')
+        else:
+            messages.error(request, 'Đổi mật khẩu không thành công!.')
     else:
-        return JsonResponse({'error': 'Phương thức không được hỗ trợ.'}, status=405)
+        form = PasswordChangeForm(request.user)
+    return render(request, 'user/changepassword.html', {'form': form})
+
+
 
 def logout_view(request):
     logout(request)

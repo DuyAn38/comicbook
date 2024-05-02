@@ -254,7 +254,7 @@ class Collapse extends BaseComponent {
     }
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     const _config = {}
     if (typeof config === 'string' && /show|hide/.test(config)) {

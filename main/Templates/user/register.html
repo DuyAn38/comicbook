@@ -2,9 +2,9 @@
 {% extends 'user/base.html' %}
 {% load static %}
 {% block register %}
+        {% include 'admin/message.html' %}
     <style>
-        
-        .containerregister {
+        .containerlogin {
             background-image: url("{% static 'user/img/background1.jpg' %}");
             max-width: 400px;
             margin: 50px auto;
@@ -12,31 +12,31 @@
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: flex;
+            display: flex; /* Sử dụng hiển thị flex để sử dụng margin-left: auto; */
             flex-direction: column;
             align-items: center;
             background-size: cover;
             background-position: center;
         }
-    
-        .containerregister h2 {
+        
+        .containerlogin h2 {
             margin-top: 0;
             margin-bottom: 20px;
             color: #22c4eb;
         }
-    
-        .containerregister form {
+        
+        .containerlogin form {
             width: 100%;
         }
-    
-        .containerregister label {
+        
+        .containerlogin label {
             display: block;
             margin-bottom: 10px;
             color: #22c4eb;
         }
-    
-        .containerregister input[type="text"],
-        .containerregister input[type="password"] {
+        
+        .containerlogin input[type="text"],
+        .containerlogin input[type="password"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 20px;
@@ -44,22 +44,22 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
-    
-        .containerregister button[type="submitregister"] {
+        
+        .containerlogin button[type="submit"] {
             padding: 10px 20px;
             background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
+            margin-left: 255px;
         }
-    
-        .containerregister button[type="submitregister"]:hover {
+        
+        .containerlogin button[type="submit"]:hover {
             background-color: #0056b3;
         }
-    
-        .containerregister p {
+        
+        .containerlogin p {
             margin-top: 20px;
             color: #333; /* Màu chữ cho đoạn văn */
         }
@@ -67,17 +67,30 @@
     </style>
 
 
-    <div class="containerregister">
+    <div class="containerlogin">
         <h2>Đăng Ký</h2>
-        <form method="POST">
+
+        <form action="{% url 'register' %}" method="POST">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="form-group">
+                <label for="categoryDescription">Tên Người Dùng</label>
+                {{ form.username }}
+            </div>
+    
+            <div class="form-group">
+                <label for="categoryDescription">Mật Khẩu</label>
+                {{ form.password1 }}
+            </div>
+
+            <div class="form-group">
+                <label for="categoryDescription">Nhập Lại Mật Khẩu</label>
+                {{ form.password2 }}
+            </div>
+
             <button type="submit">Đăng Ký</button>
         </form>
-        <p>Bạn đã có tài khoản? <a href="{% url 'login' %}">Đăng Nhập</a></p>
+        <p>Bạn chưa có tài khoản? <a href="{% url 'login' %}">Đăng Nhập</a></p>
     </div>
     
-    
-
 
 {% endblock register %}

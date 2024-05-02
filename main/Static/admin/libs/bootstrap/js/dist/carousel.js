@@ -393,7 +393,7 @@
       }
 
       return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

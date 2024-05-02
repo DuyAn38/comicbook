@@ -62,7 +62,7 @@
 
       EventHandler__default.default.trigger(this._element, EVENT_CLOSED);
       this.dispose();
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

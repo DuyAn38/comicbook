@@ -1,77 +1,69 @@
 {% extends 'admin/baseadmin.html' %}
 {% load static %}
 {% block chap %}
-
-
-
-<div class="container-fluid">
+    {% include 'admin/message.html' %}
     <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h5 class="card-title fw-semibold mb-0">Truyện</h5>
-                    
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <p class="fw-bold mb-0">Hình Ảnh</p>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="card-title fw-semibold mb-0">Truyện</h5>
+                        <a class="btn btn-success" href="{% url 'add_chap' %}">Thêm chap</a>
+                        
                     </div>
-                    <div class="col">
-                        <p class="fw-bold mb-0">Tên Truyện</p>
-                    </div>
-                    <div class="col">
-                        <p class="fw-bold mb-0">Số Chap</p>
-                    </div>
-                    <div class="col">
-                        <p class="fw-bold mb-0">Thao Tác</p>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Image" class="img-fluid" width="70" height="70">
-                            </div>
-                            <div class="col">
-                                <p class="mb-0">Tên Thể Loại 1</p>
-                            </div>
-                            <div class="col">
-                                <p class="mb-0">Số Chap 1</p>
-                            </div>
-                            <div class="col-4 d-flex justify-content-end text-end">
-                                <button type="button" class="btn btn-primary me-2">Danh Sách</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <table class="table align-items-center text-center">
+                        <thead>
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Tên Chap</th>
+                            <th scope="col">Thao Tác</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for chap in chapter %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td><img src="{{ chap.image.url }}" alt="Ảnh" style="max-width: 100px;"></td>
+                                    <td>{{ chap.story.name }} - {{ chap.name }}</td>
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <img src="{%static 'user/img/tu_cam.jpg' %}" alt="Image" class="img-fluid" width="70" height="70">
-                            </div>
-                            <div class="col">
-                                <p class="mb-0">Tên Thể Loại 1</p>
-                            </div>
-                            <div class="col">
-                                <p class="mb-0">Số Chap 1</p>
-                            </div>
-                            <div class="col-4 d-flex justify-content-end text-end">
-                                <button type="button" class="btn btn-primary me-2">Danh Sách</button>
-                                
-                            </div>
-                        </div>
-                    </div>
+                                    <td>
+                                        <!-- Add your action buttons here, such as edit, delete, etc. -->
+                                        <a href="{% url 'edit_chap' chap.id %}" class="btn btn-primary">Sửa</a>
+                                        <a class="btn btn-danger"
+                                           data-toggle="modal"
+                                           data-target="#deleteCategoryModal_{{ chap.id }}">Xóa</a>
+                                        <div class="modal" id="deleteCategoryModal_{{ chap.id }}">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Xóa Truyện</h5>
+                                                        <button type="button" class="close" data-dismiss="modal">
+                                                            &times;
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Bạn có chắc chắn muốn xóa chap "{{ chap.name }}"?</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+                                                        <form action="{% url 'delete_chap' chap.id %}"
+                                                              method="post">
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-danger">Xóa</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
-
-                
-
             </div>
         </div>
     </div>
-</div>
 
-{% endblock chap%}
+{% endblock chap %}

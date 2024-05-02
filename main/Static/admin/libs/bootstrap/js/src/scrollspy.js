@@ -257,7 +257,7 @@ class ScrollSpy extends BaseComponent {
     }
   }
 
-  // Static
+  // static
   static jQueryInterface(config) {
     return this.each(function () {
       const data = ScrollSpy.getOrCreateInstance(this, config)

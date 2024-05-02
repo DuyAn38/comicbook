@@ -255,7 +255,7 @@
         element.classList.toggle(CLASS_NAME_COLLAPSED, !isOpen);
         element.setAttribute('aria-expanded', isOpen);
       }
-    } // Static
+    } // static
 
 
     static jQueryInterface(config) {

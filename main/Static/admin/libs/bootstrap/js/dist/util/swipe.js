@@ -141,7 +141,7 @@
 
     _eventIsPointerPenTouch(event) {
       return this._supportPointerEvents && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
-    } // Static
+    } // static
 
 
     static isSupported() {
