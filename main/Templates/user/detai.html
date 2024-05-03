@@ -12,19 +12,43 @@
                     <div class="story-info">
                         <h3> {{ comic.name }}  </h3>
                         <p><strong>Tác giả:</strong> {{ comic.author }}</p>
-                        <p><strong>Thể loại:</strong> {{ comic.categories }}</p>
-                        <p><strong>Tình trạng:</strong> {{ comic.status }}</p>
-                        <p><strong>Lượt thích:</strong> {{ comic.likes}}   </p>
+
+                        <p><strong>Thể loại:</strong>
+                            {% for category in comic.categories.all %}
+                                {{ category.name }}
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </p>
+                        
+
+                        {% comment %} <p><strong>Tình trạng:</strong> {{ comic.status }}</p> {% endcomment %}
+                        <p><strong>Lượt thích:</strong> <span id="comic_likes">{{ comic.likes }}</span></p>
                         <p><strong>Lượt theo dõi:</strong> 0 </p>
                         <p><strong>Lượt xem:</strong> {{ comic.view }} </p>
-                        <div class="buttons">
-                            <button class="action-btn read-from-beginning">Đọc từ đầu</button>
-                            <button class="action-btn follow">Theo dõi</button>
-                            <button class="action-btn like">Thích</button>
-                        </div>
+
+                            <div class="buttons">
+                                <button class="action-btn read-from-beginning">Đọc Từ Đầu</button>
+                                <button class="primary-btn btn-sm border-0" type="submit">Bỏ theo dõi</button>
+                                <button class="primary-btn btn-sm border-0" type="submit">Theo dõi</button>
+                                <button class="action-btn like" data-comic-id="{{ comic.id }}">Thích</button>
+                            </div>
+            
+                        <script>
+                                                                                    
+                            $(document).ready(function() {
+                                // doc tu dau
+                                $('.read-from-beginning').click(function() {
+                                    var lastChapterUrl = $('.chapter-list__item:last-child a').attr('href');
+                                    window.location.href = lastChapterUrl;
+                                });
+                            });
+                        </script>
+                        
                     </div>
                 </div>
-                <h4>Nội dung truyện: {{ comic.name }} </h4>
+
+
+                <h5>Nội dung truyện: {{ comic.name }} </h5>
                 <div class="story-introduction">
                     <p>
                         {{ comic.Describe }}

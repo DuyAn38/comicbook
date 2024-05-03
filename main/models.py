@@ -170,3 +170,15 @@ class UserForm(UserCreationForm):
             'password1': forms.TextInput(attrs={'class': 'form-control', 'style': 'width: 100%'}),
             'password2': forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+
+class Follow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comic = models.ForeignKey(comic, on_delete=models.CASCADE)
+    followed_date = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'comic') 
+
+    def __str__(self):
+        return f"{self.user.username} - {self.comic.name}"

@@ -8,13 +8,14 @@ from django.db.models import Q
 def categoryuser(request):
     category_id = request.GET.get('category')
     categories = category.objects.all()
-    comics = comic.objects.filter()
-    comic_list = comic.objects.filter(categories=category_id)
-    print(comic_list)
-    context ={
-          
-          'categories': categories,
-          'comics': comic_list,
+    selected_category = category.objects.get(id=category_id) if category_id else None
+    comics = comic.objects.filter(categories=selected_category)
+    print(comics)
+    context = {
+        'categories': categories,
+        'comics': comics,
+        'category': selected_category,  # Truyền đối tượng category vào context
     }
     return render(request, "user/categoryuser.html", context)
+
 

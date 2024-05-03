@@ -8,12 +8,12 @@ from django.http import JsonResponse
 
 #member
 from .py.user.base import base,home
-from .py.user.detai import detai
 from .py.user.account import information,register,login_view,logout_view,changepassword
 from .py.user.categoryuser import categoryuser
 from .py.user.search import search
 from .py.user.readcomic import readcomic
-from .py.user.follow import follow
+from .py.user.detai import detai
+from .py.user.follow import followcomic,unfollowcomic
 
 #admin
 from .py.admin.baseadmin import baseadmin

@@ -1,8 +1,17 @@
-from django.contrib import messages
-from django.shortcuts import render, redirect, get_object_or_404
-from main.models import category
+from main.models import *
+from django.urls import reverse
+from django.shortcuts import get_object_or_404, redirect, render
+from main.models import comic, Follow 
 
 
+def followcomic(request, comic_id):
+    if request.user.is_authenticated:
+        comic_instance = get_object_or_404(comic, id=comic_id) 
+        follow, created = Follow.objects.get_or_create(user=request.user, comic=comic_instance)
+    return redirect(request.META.get('HTTP_REFERER', '/'))
 
-def follow (requert):
-    return render(requert,'user/follow.html')
+def unfollowcomic(request, comic_id):
+    if request.user.is_authenticated:
+        comic_instance = get_object_or_404(comic, id=comic_id)  
+        Follow.objects.filter(user=request.user, comic=comic_instance).delete()
+    return redirect(request.META.get('HTTP_REFERER', '/'))

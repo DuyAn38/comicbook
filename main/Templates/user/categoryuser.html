@@ -3,7 +3,7 @@
 {% block category %}
 
 <div class="home-container">
-    <h4> Thể loại: {{ key }}</h4>
+    <h4> Thể loại: {{category.name}}</h4>
     
     <div class="section-stories-hot__list" id="storyCarousel">
         {% for comic in comics %}

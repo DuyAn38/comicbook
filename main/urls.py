@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+
 from . import views
 from .views import *
 
@@ -12,13 +13,18 @@ urlpatterns = [
     path('categoryuser/',views.categoryuser, name = 'categoryuser'),
     path('detai/',views.detai, name='detai'),
     path('readcomic/<slug:chapter_slug>/',views.readcomic, name = "readcomic"),
+
     path('information/',views.information, name = "infomation"),
     path('changepassword/', views.changepassword, name='changepassword'),
     path('search/',views.search, name = "search"),
-    path('follow/',views.follow, name = "follow"),
     path('logout/', views.logout_view, name='logout'),
     path('login/', views.login_view, name='login'),
     path('register/', views.register, name='register'),
+
+  
+    path('follow/<int:comic_id>/', views.followcomic, name='follow_comic'),
+    path('unfollow/<int:comic_id>/', views.unfollowcomic, name='unfollow_comic'),
+
 
     #admin
     path('baseadmin/', views.baseadmin, name = 'baseadmin'),

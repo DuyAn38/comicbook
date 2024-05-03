@@ -3,84 +3,100 @@
 {% block readcomic %}
 
     <div class="container">
-        <h1 class="text-center">Tên Truyện</h1>
-        <div class="text-center mb-4">
-            <button type="button" class="btn btn-primary"> <</button>
-            <select class="custom-select" id="chap-selector">
-                <option selected>Chọn chap</option>
-                <option value="chap1">Chap 1</option>
-                <option value="chap2">Chap 2</option>
-                <option value="chap3">Chap 3</option>
-               
-            </select>
-            <button type="button" class="btn btn-primary"> > </button>
-        </div>
-
-        <div class="row">
-            
-                {% for img in images %}
-              
-                    <img src="{{ img.ImageURL }}" alt="">
-               
-                {% endfor %}
-            
-        </div>
+        <h1 class="text-center"> {{ comic.name }}</h1>
         
+        {% if current_chapter %}
+        <h3 class="text-center">{{ current_chapter.name }}</h3>
+        {% endif %}
+        
+       
         <div class="text-center mb-4">
-            <button type="button" class="btn btn-primary"> <</button>
-            <select class="custom-select" id="chap-selector">
-                <option selected>Chọn chap</option>
+            <button type="button" class="btn btn-primary" {% if not prev_chapter %}disabled{% endif %} onclick="goToPreviousChapter()"> < </button>
+            <select class="custom-select" id="chap-selector" onchange="navigateToChapter()">
+                <option selected disabled>{{ current_chapter.name }}</option>
                 {% for chap in chapters %}
-                <option value="{% url 'readcomic' chapter_slug=comic.slug %}?chap={{ chap.id }}">{{ chap.name }}</option>
+                    <option value="{{ chap.id }}">{{ chap.name }}</option>
                 {% endfor %}
             </select>
+            <button type="button" class="btn btn-primary" {% if not next_chapter %}disabled{% endif %} onclick="goToNextChapter()"> > </button>
+        </div>
+        
+        <script>
+            function navigateToChapter() {
+                var selectedChapterId = document.getElementById("chap-selector").value;
+                var currentUrl = window.location.href.split('?')[0]; 
+                window.location.href = currentUrl + '?chap_id=' + selectedChapterId;
+            }
+        
+            function goToPreviousChapter() {
+                var prevChapterId = "{{ prev_chapter.id }}";
+                if (prevChapterId) {
+                    var currentUrl = window.location.href.split('?')[0];  
+                    window.location.href = currentUrl + '?chap_id=' + prevChapterId;
+                }
+            }
+        
+            function goToNextChapter() {
+                var nextChapterId = "{{ next_chapter.id }}";
+                if (nextChapterId) {
+                    var currentUrl = window.location.href.split('?')[0]; 
+                    window.location.href = currentUrl + '?chap_id=' + nextChapterId;
+                }
+            }
+        </script>
+        
+        
+        
+        
+        <div class="row">
+                {% for img in images %}
+                    <img src="{{ img.ImageURL }}" alt="">
+                {% endfor %}
             
-            
+        </div>
+
+        <div class="text-center mb-4">
+            <button type="button" class="btn btn-primary"> < </button>
+            <select class="custom-select" id="chap-selector">
+                <option selected disabled>Chọn chap</option>
+                {% for chap in chapters %}
+                    <option value="{{ chap.id }}" href="{% url 'readcomic' chapter_slug=comic.slug %}?chap={{ chap.id }}">{{ chap.name }}</option>
+                {% endfor %}
+            </select>
             <button type="button" class="btn btn-primary"> > </button>
         </div>
         
-        
-        
-        
-
-        
+        {% comment %} chua lam {% endcomment %}
         <h3 class="mt-5">Bình luận</h3>
         <div class="comment-input">
             <input type="text" class="form-control flex-grow-1" placeholder="Nhập bình luận">
             <button type="button" class="btn btn-primary">Gửi</button>
         </div>
         
-
-
         <div class="comment-container">
-           
             <div class="comment">
-                <img src="{% static 'user/img/avatar.jpg' %}" alt="Avatar" class="avatar">
+                <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
                 <div class="comment-content">
-                    <strong>User1:</strong>
-                    <p>Bình luận 1</p>
+                    <strong>ba:</strong>
+                    <p>123 321</p>
                 </div>
             </div>
         
             <div class="comment">
-                <img src="{% static 'user/img/avatar.jpg' %}" alt="Avatar" class="avatar">
+                <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
                 <div class="comment-content">
-                    <strong>User2:</strong>
-                    <p>Bình luận 2</p>
+                    <strong>Hai:</strong>
+                    <p>Bqưdwqdqwdwqdqw</p>
                 </div>
             </div>
         
             <div class="comment">
-                <img src="{% static 'user/img/avatar.jpg' %}" alt="Avatar" class="avatar">
+                <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
                 <div class="comment-content">
-                    <strong>User3:</strong>
-                    <p>Bình luận 3</p>
+                    <strong>một:</strong>
+                    <p>dqwdwqdsas 213</p>
                 </div>
             </div>
         </div>
-
     </div>
-
-
-
 {% endblock readcomic %}

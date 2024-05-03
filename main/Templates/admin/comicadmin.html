@@ -13,16 +13,21 @@
 
 
                     {% for comic in comics %}
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <img src="{{ comic.image.url }}" alt="" class="img-fluid" width="70"
-                                             height="70">
-                                    </div>
-                                    <div class="col">
-                                        <p class="mb-0">{{ comic.name }}</p>
-                                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    {% if comic.image %}
+                                        <!-- Nếu có hình ảnh, hiển thị hình ảnh -->
+                                        <img src="{{ comic.image.url }}" alt="" class="img-fluid" width="70" height="70">
+                                    {% else %}
+                                        <!-- Nếu không có hình ảnh, hiển thị một hình ảnh mặc định hoặc thông báo -->
+                                        <img src="{% static 'path/to/default/image.jpg' %}" alt="" class="img-fluid" width="70" height="70">
+                                    {% endif %}
+                                </div>
+                                <div class="col">
+                                    <p class="mb-0">{{ comic.name }}</p>
+                                </div>
 
                                     <div class="col-4 d-flex justify-content-end text-end">
                                         <a href="{% url 'edit_comic' comic.id %}" class="btn btn-primary me-2">Sửa</a>
