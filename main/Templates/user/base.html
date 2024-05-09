@@ -23,6 +23,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-W1IeQzeT7JnvpzOKtz+ryIKG6Qm6FZlYwZ3VsU5+yQ5zYb5f4kjc+oMglaZDJglrGXzFpzbK2eDuQvKGJ/9ZKQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
+
 <!-- Import Slick Carousel JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.bundle.min.js" integrity="sha512-X9bBrKBrb7T4ATV/kX2+88FIs/uKOk5+L0sBZth0gPhly5tG9rVnS15l7o1yVtx+4R2k39p7b0agpUm85wBzTQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -72,7 +74,7 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item" href="{% url 'infomation' %}">Thông Tin Cá Nhân</a></li>
-                                {% comment %} <li><a class="dropdown-item" href="{% url 'follow' %}">Truyện Theo Dõi</a></li> {% endcomment %}
+                                <li><a class="dropdown-item" href="{% url 'follow' %}">Truyện Theo Dõi</a></li>
                                 <li><a class="dropdown-item" href="{% url 'changepassword' %}">Đổi mật khẩu</a></li>
                                 {% if user.is_staff %}
                                     <li><a class="dropdown-item" href="{% url 'categoryadmin' %}">Quản Lý</a></li>

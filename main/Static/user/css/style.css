@@ -128,42 +128,45 @@ body {
 }
 
 .read-from-beginning {
-    background-color: #26b926;
+    background-color: #c8ec10;
     color: white;
 }
 
-.follow {
-    background-color: #e70f35;
-    color: white;
+.action-btn.read-immediately {
+    background-color: #c8ec10;
+    color: white; 
+  }
+  .chapter-list {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.like {
-    background-color: #0b62dd;
-    color: white;
-}
-
-.chapter-list {
-    margin-top: 20px;
-}
-
-.chapter-list ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.chapter-list li {
+.chapter-list__title {
+    font-size: 18px;
     margin-bottom: 10px;
-}
-
-.chapter-list li a {
-    text-decoration: none;
     color: #333;
 }
 
-.chapter-list li a:hover {
-    text-decoration: underline;
-    color: #007bff;
+.chapter-list__items {
+    list-style: none;
+    padding: 0;
 }
+
+.chapter-list__item {
+    margin-bottom: 5px;
+}
+
+.chapter-list__item a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.chapter-list__item a:hover {
+    color: #0056b3;
+}
+
 
 
 
@@ -180,22 +183,8 @@ body {
     background-color: rgb(114, 112, 112); 
 }
 
-.read-from-beginning {
-    background-color: #26b926;
-    color: white;
-}
 
-.follow {
-    background-color: #e70f35;
-    color: white;
-}
-
-.like {
-    background-color: #0b62dd;
-    color: white;
-}
-
-/* css infomation */
+/* css thong tin ca nhan */
 .profile-container {
     display: flex;
     max-width: 900px;

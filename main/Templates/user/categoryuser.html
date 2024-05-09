@@ -8,7 +8,7 @@
     <div class="section-stories-hot__list" id="storyCarousel">
         {% for comic in comics %}
         <div class="story-item">
-            <a href="{% url 'detai' %}?id={{ comic.id }}" class="d-block text-decoration-none">
+            <a href="{% url 'detai' %}?slug={{ comic.slug }}" class="d-block text-decoration-none">
                 <div class="story-item__image">
                     <img src="{{ comic.ImageURL }}" alt="tucam" loading="lazy">
                 </div>

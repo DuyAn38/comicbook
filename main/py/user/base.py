@@ -36,9 +36,10 @@ def home(request):
 
 
 def home(request):
-    latest_comics = comic.objects.order_by('-id')[:15]  # Lấy ra 15 truyện mới nhất theo id giảm dần
+    latest_comics = comic.objects.order_by('-id')[:15]
     top_comics = comic.objects.order_by('-view')[:5]
-    all_comics = comic.objects.all()
+
+    all_comics = comic.objects.order_by('-id')
     paginator = Paginator(all_comics, 15)
     page_number = request.GET.get('page', 1)
 

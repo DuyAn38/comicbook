@@ -20,6 +20,7 @@ class category(models.Model):
     def __str__(self):
         return self.name
 #truyen
+
 class comic(models.Model):
     name = models.CharField(max_length=200, null=True)
     slug = models.CharField(max_length=200, null=True,blank=True)
@@ -72,10 +73,7 @@ class ImagesChap(models.Model):
 
 #thanh vien
 class member(models.Model):
-    name = models.CharField(max_length =200,null=True)
-    user_name = models.CharField(max_length =200,null=True)
-    email = models.EmailField(max_length =200,null=True)
-    password = models.CharField(max_length=200,null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     gender = models.CharField(max_length=10)
     birthdate = models.DateField()
     profile_image = models.ImageField(null=True, blank=True)
@@ -108,14 +106,22 @@ class CustommemberChangeForm(UserChangeForm):
         fields = ('username', 'email', 'first_name', 'last_name')
 
 class Comment(models.Model):
-    user = models.ForeignKey(member, on_delete=models.SET_NULL, null=True, blank=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     story = models.ForeignKey(comic, on_delete=models.SET_NULL, null=True, blank=True)
     title = models.TextField(null=True, blank=False)
     date = models.DateTimeField(default=timezone.now, blank=True, null=True)
     def __str__(self):
-        return self.story
+        return self.story.name
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['title']
 
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            
+        }
 
 class CategoryForm(forms.ModelForm):
     class Meta:

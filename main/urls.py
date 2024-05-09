@@ -13,7 +13,6 @@ urlpatterns = [
     path('categoryuser/',views.categoryuser, name = 'categoryuser'),
     path('detai/',views.detai, name='detai'),
     path('readcomic/<slug:chapter_slug>/',views.readcomic, name = "readcomic"),
-
     path('information/',views.information, name = "infomation"),
     path('changepassword/', views.changepassword, name='changepassword'),
     path('search/',views.search, name = "search"),
@@ -21,10 +20,10 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('register/', views.register, name='register'),
 
-  
-    path('follow/<int:comic_id>/', views.followcomic, name='follow_comic'),
-    path('unfollow/<int:comic_id>/', views.unfollowcomic, name='unfollow_comic'),
-
+    path('follow/', views.comic_follow, name='follow'),
+    # Follow comic
+    path('follow/<int:comic_id>/', views.followcomic, name='followcomic'),
+    path('unfollow/<int:comic_id>/', views.unfollowcomic, name='unfollowcomic'),
 
     #admin
     path('baseadmin/', views.baseadmin, name = 'baseadmin'),

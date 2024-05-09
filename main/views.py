@@ -13,7 +13,7 @@ from .py.user.categoryuser import categoryuser
 from .py.user.search import search
 from .py.user.readcomic import readcomic
 from .py.user.detai import detai
-from .py.user.follow import followcomic,unfollowcomic
+from .py.user.follow import comic_follow,followcomic,unfollowcomic
 
 #admin
 from .py.admin.baseadmin import baseadmin

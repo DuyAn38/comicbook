@@ -16,16 +16,16 @@
     </div>
 
     <div class="section-stories-hot__list" id="storyCarousel">
-        
+        {% for comic in followed_comics %}
         <div class="story-item">
             <a href="#" class="d-block text-decoration-none">
                 <div class="story-item__image">
-                    <img src="{%static 'user/img/tu_cam.jpg' %}" alt="tucam" loading="lazy">
+                    <img src="{% static comic.image.url %}" alt="{{ comic.name }}" loading="lazy">
                 </div>
-                <h3 class="story-item__name text-one-row story-name">Tự Cẩm</h3>
+                <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
             </a>
         </div>
-        
+        {% endfor %}
     </div>
 </div>
 

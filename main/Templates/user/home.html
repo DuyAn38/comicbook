@@ -3,7 +3,6 @@
     {% block home %}
             {% include 'admin/message.html' %}
     <main>
-
         <div class="home-container">
             <div class="row">
                 <div class="head-title-global d-flex justify-content-between mb-2">
@@ -37,42 +36,33 @@
         
 
 
-    <div class="section-stories-hot mb-3">
-        <div class="home-container">
-            <div class="row">
-                <div class="head-title-global d-flex justify-content-between mb-2">
-                    <div class="col-6 col-md-4 col-lg-4 head-title-global__left d-flex align-items-center">
-                        <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
-                            <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
-                                title="Truyện mới cập nhật">Truyện mới cập nhật</a>
-                        </h2>
-                        <i class="fa-solid fa-fire-flame-curved"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-stories-hot__list">
-                        {% for comic in comics %}
-                        <div class="story-item">
-                            <a href="{% url 'detai' %}?slug={{ comic.slug }}" class="d-block text-decoration-none">
-                                <div class="story-item__image">
-                                    <img src="{{ comic.ImageURL }}" alt="" class="img-fluid" width="150" height="230" loading="lazy">
-                                </div>
-                                <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
-                            </a>
+        <div class="section-stories-hot mb-3">
+            <div class="home-container">
+                <div class="row">
+                    <div class="head-title-global d-flex justify-content-between mb-2">
+                        <div class="col-6 col-md-4 col-lg-4 head-title-global__left d-flex align-items-center">
+                            <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
+                                <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
+                                    title="Truyện mới cập nhật">Truyện Mới</a>
+                            </h2>
+                            <i class="fa-solid fa-fire-flame-curved"></i>
                         </div>
-                        {% endfor %}
                     </div>
                 </div>
+        
+                {% for comic in comics %}
+                <div class="story-item">
+                    <a href="{% url 'detai' %}?slug={{ comic.slug }}" class="d-block text-decoration-none">
+                        <div class="story-item__image">
+                            <img src="{{ comic.ImageURL }}" alt="" class="img-fluid" width="150" height="230" loading="lazy">
+                        </div>
+                        <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
+                    </a>
+                </div>
+                {% endfor %}
             </div>
-            
-            
-            
-
         </div>
-
+        
         {% comment %} page {% endcomment %}
         <div class="pagination-container">
             <ul class="pagination justify-content-center">
@@ -99,7 +89,5 @@
                 {% endif %}
             </ul>
         </div>
-
-
-        </main>
+    </main>
     {% endblock home %}

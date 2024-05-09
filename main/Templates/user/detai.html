@@ -21,32 +21,79 @@
                         </p>
                         
 
-                        {% comment %} <p><strong>Tình trạng:</strong> {{ comic.status }}</p> {% endcomment %}
-                        <p><strong>Lượt thích:</strong> <span id="comic_likes">{{ comic.likes }}</span></p>
+                        {% comment %} <p><strong>Lượt thích:</strong> <span id="comic_likes">{{ comic.likes }}</span></p> {% endcomment %}
                         <p><strong>Lượt theo dõi:</strong> 0 </p>
                         <p><strong>Lượt xem:</strong> {{ comic.view }} </p>
 
                             <div class="buttons">
-                                <button class="action-btn read-from-beginning">Đọc Từ Đầu</button>
-                                <button class="primary-btn btn-sm border-0" type="submit">Bỏ theo dõi</button>
-                                <button class="primary-btn btn-sm border-0" type="submit">Theo dõi</button>
-                                <button class="action-btn like" data-comic-id="{{ comic.id }}">Thích</button>
+                                <button class="action-btn read-from-beginning">Đọc Ngay</button>
+                                <button class="action-btn read-immediately">Đọc Từ Đầu</button>
+
+                                <script>
+                                    
+                                    // Đọc Ngay
+                                    $(document).ready(function() {
+                                        $('.read-immediately').click(function() {
+                                            var lastChapterUrl = $('.chapter-list__item:last-child a').attr('href');
+                                            window.location.href = lastChapterUrl;
+                                        });
+                                    });
+
+                                    // Đọc Từ Đầu                                                  
+                                    $(document).ready(function() {
+                                        $('.read-from-beginning').click(function() {
+                                            var firstChapterUrl = $('.chapter-list__item:first-child a').attr('href');
+                                            window.location.href = firstChapterUrl;
+                                        });
+                                    });
+                                </script>
+
+
+
+
+                                {% if user.is_authenticated %}
+                                    {% if follow.exists %}
+                                        <form action="{% url 'unfollowcomic' comic_id=comic.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button class="primary-btn btn-sm border-0" type="submit">Bỏ theo dõi</button>
+                                        </form>
+                                    {% else %}
+                                        <form action="{% url 'followcomic' comic_id=comic.id %}" method="post">
+                                            {% csrf_token %}
+                                            <button class="primary-btn btn-sm border-0" type="submit">Theo dõi</button>
+                                        </form>
+                                    {% endif %}
+                                {% else %}
+                                    <button class="primary-btn btn-sm border-0" data-bs-toggle="modal" data-bs-target="#exampleModalFollow">Theo dõi</button>
+
+                                    <div class="modal fade" id="exampleModalFollow" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="fs-5">Popover in a modal</h5>
+                                                    <button type="button" class="close" data-bs-dismiss="modal"
+                                                            aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Bạn cần đăng nhập để thực hiện chức năng theo dõi. Bạn có muốn
+                                                    đăng nhập không?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal">Hủy
+                                                    </button>
+                                                    <a href="{% url 'login' %}" class="btn btn-primary">Đồng ý</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
                             </div>
-            
-                        <script>
-                                                                                    
-                            $(document).ready(function() {
-                                // doc tu dau
-                                $('.read-from-beginning').click(function() {
-                                    var lastChapterUrl = $('.chapter-list__item:last-child a').attr('href');
-                                    window.location.href = lastChapterUrl;
-                                });
-                            });
-                        </script>
-                        
                     </div>
                 </div>
-
 
                 <h5>Nội dung truyện: {{ comic.name }} </h5>
                 <div class="story-introduction">
@@ -55,7 +102,6 @@
                     </p>
                 </div>
                 
-
                 <div class="chapter-list">
                     <h4 class="chapter-list__title">Danh sách chương</h4>
                     <ul class="chapter-list__items">
@@ -68,39 +114,6 @@
                     </ul>
                 </div>
 
-                <style>
-                    .chapter-list {
-                        border: 1px solid #ddd;
-                        padding: 10px;
-                        border-radius: 5px;
-                    }
-                    
-                    .chapter-list__title {
-                        font-size: 18px;
-                        margin-bottom: 10px;
-                        color: #333;
-                    }
-                    
-                    .chapter-list__items {
-                        list-style: none;
-                        padding: 0;
-                    }
-                    
-                    .chapter-list__item {
-                        margin-bottom: 5px;
-                    }
-                    
-                    .chapter-list__item a {
-                        text-decoration: none;
-                        color: #007bff;
-                        transition: color 0.3s ease;
-                    }
-                    
-                    .chapter-list__item a:hover {
-                        color: #0056b3;
-                    }
-                    
-                </style>
             </div>
         </div>
     </main>

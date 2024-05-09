@@ -21,6 +21,24 @@
             <button type="button" class="btn btn-primary" {% if not next_chapter %}disabled{% endif %} onclick="goToNextChapter()"> > </button>
         </div>
         
+       
+        
+        
+        
+        
+        <div class="row">
+                {% for img in images %}
+                    <img src="{{ img.ImageURL }}" alt="">
+                {% endfor %}
+            
+        </div>
+
+        <div class="text-center mb-4">
+            <button type="button" class="btn btn-primary" {% if not prev_chapter %}disabled{% endif %} onclick="goToPreviousChapter()"> < Chap Trước </button>
+            
+            <button type="button" class="btn btn-primary" {% if not next_chapter %}disabled{% endif %} onclick="goToNextChapter()"> Chap Sau > </button>
+        </div>
+
         <script>
             function navigateToChapter() {
                 var selectedChapterId = document.getElementById("chap-selector").value;
@@ -44,59 +62,40 @@
                 }
             }
         </script>
-        
-        
-        
-        
-        <div class="row">
-                {% for img in images %}
-                    <img src="{{ img.ImageURL }}" alt="">
-                {% endfor %}
-            
-        </div>
 
-        <div class="text-center mb-4">
-            <button type="button" class="btn btn-primary"> < </button>
-            <select class="custom-select" id="chap-selector">
-                <option selected disabled>Chọn chap</option>
-                {% for chap in chapters %}
-                    <option value="{{ chap.id }}" href="{% url 'readcomic' chapter_slug=comic.slug %}?chap={{ chap.id }}">{{ chap.name }}</option>
-                {% endfor %}
-            </select>
-            <button type="button" class="btn btn-primary"> > </button>
-        </div>
+        
+
+        
         
         {% comment %} chua lam {% endcomment %}
         <h3 class="mt-5">Bình luận</h3>
-        <div class="comment-input">
+        <form method="POST" action="">
+            {% csrf_token %}
+            {{ formComment.title }}
+            <div class="float-end mt-2 pt-1">
+                <button name="comment" type="submit"
+                        class="btn btn btn-primary btn-sm">Bình luận
+                </button>
+            </div>
+        </form>
+        {% comment %} <div class="comment-input">
             <input type="text" class="form-control flex-grow-1" placeholder="Nhập bình luận">
             <button type="button" class="btn btn-primary">Gửi</button>
-        </div>
+        </div> {% endcomment %}
         
         <div class="comment-container">
-            <div class="comment">
-                <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
-                <div class="comment-content">
-                    <strong>ba:</strong>
-                    <p>123 321</p>
+            {% for comment in lstComment  %}
+                <div class="comment">
+                    <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
+                    <div class="comment-content">
+                        <strong>{{comment.user.username}}</strong>
+                        <p>{{comment.title}}</p>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
+            
         
-            <div class="comment">
-                <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
-                <div class="comment-content">
-                    <strong>Hai:</strong>
-                    <p>Bqưdwqdqwdwqdqw</p>
-                </div>
-            </div>
-        
-            <div class="comment">
-                <img src="{% static 'images/avatar.jpg' %}" alt="Avatar" class="avatar">
-                <div class="comment-content">
-                    <strong>một:</strong>
-                    <p>dqwdwqdsas 213</p>
-                </div>
-            </div>
+    
         </div>
     </div>
 {% endblock readcomic %}
