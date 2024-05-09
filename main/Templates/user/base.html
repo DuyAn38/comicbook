@@ -75,7 +75,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <li><a class="dropdown-item" href="{% url 'infomation' %}">Thông Tin Cá Nhân</a></li>
                                 <li><a class="dropdown-item" href="{% url 'follow' %}">Truyện Theo Dõi</a></li>
-                                <li><a class="dropdown-item" href="{% url 'changepassword' %}">Đổi mật khẩu</a></li>
+                                {% comment %} <li><a class="dropdown-item" href="{% url 'changepassword' %}">Đổi mật khẩu</a></li> {% endcomment %}
                                 {% if user.is_staff %}
                                     <li><a class="dropdown-item" href="{% url 'categoryadmin' %}">Quản Lý</a></li>
                                 {% endif %}

@@ -9,14 +9,17 @@ from main.models import *
 
 
 def information(requert):
+    categories = category.objects.filter(is_sub=False)
     users = User.objects.all()
     print(users)
     context = {
-        'users': users
+        'users': users,
+        "categories" : categories,
     }
     return render(requert,'user/information.html', context)
 
 def register(request):
+    categories = category.objects.filter(is_sub=False)
     form = UserForm()
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES)
@@ -30,12 +33,14 @@ def register(request):
         form = UserForm()
     context = {
         'form': form,
+        "categories" : categories,
     }
     return render(request, 'user/register.html', context)
 
 
 
 def changepassword(request):
+    categories = category.objects.filter(is_sub=False)
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():

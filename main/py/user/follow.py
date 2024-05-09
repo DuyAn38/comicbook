@@ -9,37 +9,18 @@ from main.models import comic, Follow
 
 
 def comic_follow(request):
-    followed_comics = [] 
+    categories = category.objects.filter(is_sub=False)
     if request.user.is_authenticated:
-        follows = Follow.objects.filter(user=request.user)
-        print('Following')
-        for follow in follows:
-            followed_comics.append(follow.comic)  # Thay đổi từ follow.story sang follow.comic
-
-    for comics in followed_comics:
-        latest_chapter = comics.chapters.order_by('-name').first()
-        if latest_chapter:
-            match = re.search(r'\d+', latest_chapter.name)
-            if match:
-                chapter_number = match.group() 
-                comics.chapter_number = chapter_number
-                comics.latest_chapter_date = latest_chapter.date 
-                comics.chapter_id = latest_chapter.id
-                print("Chapter number:", comics.chapter_number )
-                print("Chapter id: ", comics.chapter_id)
-                print("Latest chapter date:", latest_chapter.date)
-            else:
-                print("No number found in chapter name")
-        else:
-            print("No chapters found for story:", comics.name)
-
-    context = {
-        'comics': followed_comics,
-    }
-    return render(request, 'user/follow.html', context)
-    # if request.user.is_authenticated:
-    #     story = get_object_or_404(Story, id=story_id)
-    #     follow, created = Follow.objects.get_or_create(user=request.user, story=story)
+        followed_comics = Follow.objects.filter(user=request.user).select_related('comic')
+        context = {
+            'followed_comics': followed_comics,
+            "categories" : categories,
+        }
+        return render(request, 'user/follow.html', context)
+    else:
+        return redirect('login')
+    
+  
 def followcomic(request, comic_id):
     print("He1")
     print(comic_id)

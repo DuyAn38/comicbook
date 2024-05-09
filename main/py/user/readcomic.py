@@ -5,6 +5,7 @@ from main.models import *
 from django.http import Http404
 
 def readcomic(request, chapter_slug):
+    categories = category.objects.filter(is_sub=False)
     formComment = CommentForm()
     story = get_object_or_404(comic, slug=chapter_slug)
     chapters = Chap.objects.filter(story=story)
@@ -43,6 +44,7 @@ def readcomic(request, chapter_slug):
         'current_chapter': chapter,
         'formComment': formComment, 
         'lstComment': lstComment,
+        'categories' : categories,
     }
 
     return render(request, 'user/readcomic.html', context)

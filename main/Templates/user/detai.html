@@ -21,8 +21,7 @@
                         </p>
                         
 
-                        {% comment %} <p><strong>Lượt thích:</strong> <span id="comic_likes">{{ comic.likes }}</span></p> {% endcomment %}
-                        <p><strong>Lượt theo dõi:</strong> 0 </p>
+                        {% comment %} <p><strong>Lượt theo dõi:</strong> 0 </p> {% endcomment %}
                         <p><strong>Lượt xem:</strong> {{ comic.view }} </p>
 
                             <div class="buttons">
@@ -55,15 +54,16 @@
                                     {% if follow.exists %}
                                         <form action="{% url 'unfollowcomic' comic_id=comic.id %}" method="post">
                                             {% csrf_token %}
-                                            <button class="primary-btn btn-sm border-0" type="submit">Bỏ theo dõi</button>
+                                            <button class="action-btn primary-btn btn-sm border-0" type="submit">Bỏ theo dõi</button>
                                         </form>
                                     {% else %}
                                         <form action="{% url 'followcomic' comic_id=comic.id %}" method="post">
                                             {% csrf_token %}
-                                            <button class="primary-btn btn-sm border-0" type="submit">Theo dõi</button>
+                                            <button class="action-btn primary-btn btn-sm border-0" type="submit">Theo dõi</button>
                                         </form>
                                     {% endif %}
                                 {% else %}
+
                                     <button class="primary-btn btn-sm border-0" data-bs-toggle="modal" data-bs-target="#exampleModalFollow">Theo dõi</button>
 
                                     <div class="modal fade" id="exampleModalFollow" tabindex="-1"
@@ -71,27 +71,46 @@
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="fs-5">Popover in a modal</h5>
+                                                    <h5 class="fs-5">Theo Dõi</h5>
                                                     <button type="button" class="close" data-bs-dismiss="modal"
                                                             aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Bạn cần đăng nhập để thực hiện chức năng theo dõi. Bạn có muốn
-                                                    đăng nhập không?
+                                                    Bạn cần đăng nhập để thực hiện chức năng theo dõi.
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Hủy
                                                     </button>
-                                                    <a href="{% url 'login' %}" class="btn btn-primary">Đồng ý</a>
+                                                    <a href="{% url 'login' %}" class="btn btn-primary">Đăng Nhập</a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 {% endif %}
                             </div>
+
+                            <style>
+                                .buttons {
+                                    display: flex; /* Sắp xếp các phần tử con theo chiều ngang */
+                                    align-items: center; /* Căn các phần tử con theo chiều dọc */
+                                    padding: 10px 20px;
+                                    border: none;
+                                    cursor: pointer;
+                                    margin-right: 10px;
+                                    
+                                }
+                                
+                                
+                                .primary-btn {
+                                    
+                                    background-color: #dc3545;
+                                    color: white;
+                                }
+                                
+                            </style>
                     </div>
                 </div>
 
@@ -113,6 +132,7 @@
                         
                     </ul>
                 </div>
+
 
             </div>
         </div>

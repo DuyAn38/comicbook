@@ -8,7 +8,7 @@
             <div class="col-4 col-md-3 col-lg-2 head-title-global__left d-flex align-items-center">
                 <h2 class="me-2 mb-0 border-bottom border-secondary pb-1">
                     <a href="#" class="d-block text-decoration-none text-dark fs-4 story-name"
-                        title="Truyện Hot"> Truyện Theo Dõi</a>
+                        title="Truyện Hot"> Theo Dõi</a>
                 </h2>
                 <i class="fa-solid fa-fire-flame-curved"></i>
             </div>
@@ -16,17 +16,18 @@
     </div>
 
     <div class="section-stories-hot__list" id="storyCarousel">
-        {% for comic in followed_comics %}
+        {% for follow in followed_comics %}
         <div class="story-item">
             <a href="#" class="d-block text-decoration-none">
                 <div class="story-item__image">
-                    <img src="{% static comic.image.url %}" alt="{{ comic.name }}" loading="lazy">
+                    <img src="{% static follow.comic.image.url %}" alt="{{ follow.comic.name }}" loading="lazy">
                 </div>
-                <h3 class="story-item__name text-one-row story-name">{{ comic.name }}</h3>
+                <h3 class="story-item__name text-one-row story-name">{{ follow.comic.name }}</h3>
             </a>
         </div>
         {% endfor %}
     </div>
+    
 </div>
 
 {% endblock follow  %}
