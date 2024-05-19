@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
 from django.contrib.auth.forms import PasswordChangeForm
+from django.utils.translation import gettext as _
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from main.models import *
@@ -38,19 +39,26 @@ def register(request):
     return render(request, 'user/register.html', context)
 
 
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['old_password'].label = _('Mật khẩu hiện tại')
+        self.fields['new_password1'].label = _('Mật khẩu mới')
+        self.fields['new_password2'].label = _('Nhập lại mật khẩu mới')
 
+@login_required 
 def changepassword(request):
-    categories = category.objects.filter(is_sub=False)
     if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
+        form = CustomPasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
+            update_session_auth_hash(request, user)
             messages.success(request, 'Mật khẩu của bạn đã được thay đổi thành công!')
             return redirect('changepassword')
         else:
-            messages.error(request, 'Đổi mật khẩu không thành công!.')
+            messages.error(request, 'Đổi mật khẩu không thành công!')
     else:
-        form = PasswordChangeForm(request.user)
+        form = CustomPasswordChangeForm(request.user)
     return render(request, 'user/changepassword.html', {'form': form})
 
 
@@ -69,7 +77,7 @@ def login_view(request):
             messages.success(request, 'Đăng nhập thành công.')
             return redirect('home')  
         else:
-            # Đăng nhập thất bại, hiển thị form đăng nhập với thông báo lỗi
+
             messages.error(request, 'Tên đăng nhập hoặc mật khẩu không đúng.')
             return render(request, 'user/login.html')
     else:
